@@ -28,6 +28,16 @@ namespace ConnectMe
             p.username = "pdb119";
             p.age = 22;
             p.picture = "pb.jpg";
+            p.location = "Seattle, WA";
+            p.games = new Game[4];
+            p.games[0] = new Game();
+            p.games[1] = new Game();
+            p.games[2] = new Game();
+            p.games[3] = new Game();
+            p.games[0].name = "Halo 4";
+            p.games[1].name = "Minecraft";
+            p.games[2].name = "Gears of War 3";
+            p.games[3].name = "Far Cry 4";
             Context.Response.Clear();
             Context.Response.ContentType = "text/json";
             Context.Response.Write(new JavaScriptSerializer().Serialize(p));

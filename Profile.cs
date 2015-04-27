@@ -10,5 +10,7 @@ namespace ConnectMe
         public string username;
         public int age;
         public string picture;
+        public string location;
+        public Game[] games;
     }
 }

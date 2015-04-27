@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
 <head>
 	<title>Profile</title>
@@ -6,11 +6,14 @@
 	<link rel="stylesheet" href="css/styles.css">
 	<meta name="author" content="lithach">
 	<link rel="shortcut icon" href="img/icons/logo.png">
-	
+    <script type="text/javascript" src="data.js"></script>
+    <script type="text/javascript" src="display.js"></script>
+    <script type="text/javascript" src="control.js"></script>
+	<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
 
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
@@ -32,53 +35,55 @@
 			</button>
 		</div>
 		<div class="profileDetails">
-			<h1>Name</h1>
-			<h2>Age</h2>
-			<h2>Location</h2>
+            <h1 id="profileNameSpan">Name</h1>
+            <h2 id="profileAgeSpan">Age</h2>
+            <h2 id="profileLocationSpan">Location</h2>
 		</div>	
 	</div>
 
-	<div class="gameSection">
-		<div class="editButton">
-			<button type="button" class="btn btn-default btn-sm" aria-label="Edit">
-				<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-			</button>
+    <div id="gamesDiv">
+        <div id="gameTemplate" class="gameSection" style="display:none;">
+            <div class="editButton">
+                <button type="button" class="btn btn-default btn-sm" aria-label="Edit">
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="game">
+                <h1>Halo</h1>
+            </div>
+
+        </div>
+    </div>
+
+	<div class="addGame container">
+		<button id="add" type="button" class="btn btn-success btn-block btn-lg" data-toggle="modal" data-target=".bs-example-modal-sm">+ Add Game</button>
+
+		<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-sm">
+		    <div class="modal-content">
+		      <div class="modal-body">
+		        <div class="search-bar"> 
+				    <div class="row">
+				    	<i id="exit" class="fa fa-times-circle"></i>
+				        <div class="input-group">
+				            <input type="text" id="input" class="form-control" placeholder="Search">
+				            <span class="input-group-btn">
+				                <button id="query" class="btn btn-default" type="button">
+				                    <span class=" glyphicon glyphicon-search" aria-hidden="true"></span>
+				                </button>
+				            </span>
+				        </div>
+					</div>
+				</div>
+				<div id="result">
+					<li>
+						<ul><h3> Halo <i class="fa fa-plus-circle"></i> </h3> </ul>
+					</li>
+				</div>
+		      </div>
+		    </div>
+		  </div>
 		</div>
-		<div class="game">
-			<h1>Starcraft</h1>
-		</div>
-	</div>
-
-	<div class="gameSection">
-		<div class="editButton">
-			<button type="button" class="btn btn-default btn-sm" aria-label="Edit">
-				<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-			</button>
-		</div>
-		<div class="game">
-			<h1>Halo</h1>
-		</div>
-
-	</div>
-	<div class="gameSection">
-		<div class="editButton">
-			<button type="button" class="btn btn-default btn-sm" aria-label="Edit">
-				<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-			</button>
-		</div>
-		<div class="game">
-			<h1>CounterStrike</h1>
-		</div>	
-	</div>
-
-	
-		
-	
-
-
-
-	<div class="addGame">
-		<button id="add" type="button" class="btn btn-success btn-block btn-lg">+ Add Game</button>
 	</div>
 
 	<div class="bottom-menu">
@@ -86,7 +91,7 @@
 		<img class="myProfile" src="img/icons/myProfileB.png">
 		<img class="msg" src="img/icons/msgWhite.png">
 		<img class="friends" src="img/icons/friendsWhite.png">
-		<img class="friends" src="img/icons/friendsWhite.png"> 
+		<img class="friends" src="img/icons/settingsWhite.png"> 
 		<!-- last icon place holder for setting icon -->
 	</div>
 </body>

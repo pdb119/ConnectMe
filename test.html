@@ -4,14 +4,20 @@
     <title></title>
     <script type="text/javascript" src="data.js"></script>
     <script type="text/javascript">
+        var prof;
         window.onload = function () {
             alert("anything");
-            var prof = new profileContent();
+            prof = new profileContent();
             prof.downloadProfile();
+            //alert(prof.username);
         };
+        function alerter() {
+            alert(prof.username);
+        }
     </script>
 </head>
 <body>
-
+    fdsafdsafdsaf
+    <a href="#" onclick="alerter();">fdsafdsa</a>
 </body>
 </html>
