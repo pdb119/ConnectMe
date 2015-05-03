@@ -1,7 +1,7 @@
-﻿<!doctype html>
+<!doctype html>
 <html>
 <head>
-	<title>Profile</title>
+	<title>Friend Profile</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="css/styles.css">
 	<meta name="author" content="lithach">
@@ -31,8 +31,9 @@
 		<img class="profilePic" src="img/icons/myProfileWhite.png">
 		<div class="editButton">
 			<button type="button" class="btn btn-default btn-sm" aria-label="Edit">
-					<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+					<span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
 			</button>
+			<!-- cancel goes back to previous page -->
 		</div>
 		<div class="profileDetails">
             <h1 id="profileNameSpan">Name</h1>
@@ -40,6 +41,30 @@
             <h2 id="profileLocationSpan">Location</h2>
 		</div>	
 	</div>
+
+	<br>
+	<br>
+
+	<div id="options">
+		<!-- msg -->
+		<a href="">	
+			<img class="setting" src="img/icons/reportWhite.png">
+		</a> 
+		<!-- add friend -->
+		<a href="">	
+			<img class="setting" src="img/icons/reportWhite.png">
+		</a>
+		<!-- schedule -->
+		<a href="">	
+			<img class="setting" src="img/icons/reportWhite.png">
+		</a>
+		<!-- report -->
+		<a href="">	
+			<img class="setting" src="img/icons/reportWhite.png">
+		</a>
+	</div>
+
+	
 
     <div id="gamesDiv">
         <div id="gameTemplate" class="gameSection" style="display:none;">
@@ -55,37 +80,7 @@
         </div>
     </div>
 
-	<div class="addGame container">
-		<button id="add" type="button" class="btn btn-success btn-block btn-lg" data-toggle="modal" data-target=".bs-example-modal-sm">+ Add Game</button>
-
-		<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-sm">
-		    <div class="modal-content">
-		      <div class="modal-body">
-		        <div class="search-bar"> 
-				    <div class="row">
-				    	<i id="exit" class="fa fa-times-circle"></i>
-				        <div class="input-group">
-				            <input type="text" id="input" class="form-control" placeholder="Search">
-				            <span class="input-group-btn">
-				                <button id="query" class="btn btn-default" type="button">
-				                    <span class=" glyphicon glyphicon-search" aria-hidden="true"></span>
-				                </button>
-				            </span>
-				        </div>
-					</div>
-				</div>
-				<div id="result">
-					<li>
-						<ul><h3> Halo <i class="fa fa-plus-circle"></i> </h3> </ul>
-					</li>
-				</div>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-	</div>
-
+	
 	<div class="bottom-menu">
 		<a href="index.html">	
 			<img class="map" src="img/icons/mapWhite.png">
