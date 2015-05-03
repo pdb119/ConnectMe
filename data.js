@@ -52,3 +52,22 @@ profileContent.prototype.addGame = function(){
 profileContent.prototype.getGame = function () {
 
 };
+
+var gameSearch = function (updateFunction) {
+    this.gameList = new Array();
+    this.updateFunction = updateFunction;
+};
+gameSearch.prototype.search = function(term){
+    var aj = new ajax();
+    aj.setReturnFunction(this.returnFunction, this);
+    aj.sendAjax("gameSearch", { "searchTerm": term });
+};
+gameSearch.prototype.returnFunction = function () {
+    var json = JSON.parse(this.responseText);
+    var locA = ajaxDictionary[this];
+    delete ajaxDictionary[this];
+    for (var i = 0; i < json.games.length; i++) {
+        locA.gameList[locA.gameList.length] = json.games[i];
+    }
+    locA.updateFunction();
+}

@@ -43,5 +43,9 @@ namespace ConnectMe
             Context.Response.Write(new JavaScriptSerializer().Serialize(p));
             Context.Response.End();
         }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = true,ResponseFormat = ResponseFormat.Json)]
+        public void 
+        
     }
 }

@@ -12,3 +12,6 @@
     }
     //document.getElementById("profileNameSpan").innerHTML = profile.username;
 }
+function displaySearchGames(games) {
+
+}
