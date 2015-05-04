@@ -14,9 +14,30 @@ body {
   //max-height: 800px;*/
 }
 
+div {
+  text-align: center;
+}
+
+#dividerspan {
+ background-color: #6DB1D5; 
+ position: relative; 
+ top: -0.5em;
+}
+
+#divider {
+  margin: 20px;
+  height: 2px; 
+  background-color: white; 
+  text-align: center
+}
 #form {
   color:black;
   float:left;
+}
+
+form { 
+margin: 0 auto; 
+width: 40%;
 }
 
 h1 {
@@ -29,6 +50,20 @@ h3 {
 	text-align: left;
 }
 
+ #gamen, #frname {
+  float:left;
+  padding:0px;
+}
+
+#profilepic {
+  float:left;
+  height: 70px;
+}
+
+#schat {
+  float: right;
+  position:relative;
+}
 
 .bottom-menu {
   width:100%;
