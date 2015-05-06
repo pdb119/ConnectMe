@@ -13,5 +13,11 @@
     //document.getElementById("profileNameSpan").innerHTML = profile.username;
 }
 function displaySearchGames(games) {
-
+    for (var i = 0; i < games.length; i++) {
+        var template = document.getElementById("gameResultTemplate").cloneNode(true);
+        template.querySelector(".gameResultTitle").innerHTML = games[i];
+        template.setAttribute("id", games[i].replace(" ", "") + "GameResult");
+        template.style.display = "block";
+        document.getElementById("gameResults").appendChild(template);
+    }
 }

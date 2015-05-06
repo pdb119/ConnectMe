@@ -70,4 +70,4 @@ gameSearch.prototype.returnFunction = function () {
         locA.gameList[locA.gameList.length] = json.games[i];
     }
     locA.updateFunction();
-}
+};

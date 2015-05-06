@@ -45,7 +45,16 @@ namespace ConnectMe
         }
         [WebMethod]
         [ScriptMethod(UseHttpGet = true,ResponseFormat = ResponseFormat.Json)]
-        public void 
+        public void gameSearch(string searchTerm)
+        {
+            string[] p = new string[2];
+            p[0] = "halo 4";
+            p[1] = "halo 3";
+            Context.Response.Clear();
+            Context.Response.ContentType = "text/json";
+            Context.Response.Write(new JavaScriptSerializer().Serialize(p));
+            Context.Response.End();
+        }
         
     }
 }
