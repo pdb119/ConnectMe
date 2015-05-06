@@ -3,7 +3,7 @@ var gSearch;
 window.onload = function () {
     prof = new profileContent(profileUpdated);
     prof.downloadProfile();
-    gSearch = new gameSearch();
+    gSearch = new gameSearch(searchGamesReturn);
     gameSearchBtn.onclick = function () {
         gSearch.search("test");
     }
@@ -13,4 +13,7 @@ function profileUpdated() {
 }
 function searchGamesReturn() {
     displaySearchGames(gSearch.gameList);
+}
+function addGameClicked(gameName) {
+    prof.addGame(gameName);
 }

@@ -13,6 +13,9 @@ ajax.prototype.sendAjax = function (method,vars) {
     xmlHttp.onload = this.returnFunction;
     ajaxDictionary[xmlHttp] = this.thisObject;
     xmlHttp.open("POST", "data.asmx/" + method);
+    xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlHttp.setRequestHeader("Content-length", vars.length);
+    xmlHttp.setRequestHeader("Connection", "close");
     xmlHttp.send(vars);
 };
 var profileContent = function (updateFunction) {
@@ -20,6 +23,7 @@ var profileContent = function (updateFunction) {
     this.age = 0;
     this.picture = "";
     this.location = "";
+    //
     this.games = new Array();
     this.updateFunction = updateFunction;
 };
@@ -46,8 +50,9 @@ profileContent.prototype.downloadProfileReturn = function () {
     locA.location = json.location;
     locA.updateFunction();
 };
-profileContent.prototype.addGame = function(){
-
+profileContent.prototype.addGame = function(gameName){
+    this.games[this.games.length] = { "name": gameName };
+    this.updateFunction();
 };
 profileContent.prototype.getGame = function () {
 
@@ -60,7 +65,7 @@ var gameSearch = function (updateFunction) {
 gameSearch.prototype.search = function(term){
     var aj = new ajax();
     aj.setReturnFunction(this.returnFunction, this);
-    aj.sendAjax("gameSearch", { "searchTerm": term });
+    aj.sendAjax("gameSearch", "searchTerm="+term);
 };
 gameSearch.prototype.returnFunction = function () {
     var json = JSON.parse(this.responseText);

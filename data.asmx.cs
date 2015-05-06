@@ -52,7 +52,7 @@ namespace ConnectMe
             p[1] = "halo 3";
             Context.Response.Clear();
             Context.Response.ContentType = "text/json";
-            Context.Response.Write(new JavaScriptSerializer().Serialize(p));
+            Context.Response.Write("{\"games\":"+new JavaScriptSerializer().Serialize(p)+"}");
             Context.Response.End();
         }
         
