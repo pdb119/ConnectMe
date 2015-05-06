@@ -44,6 +44,40 @@ namespace ConnectMe
             Context.Response.End();
         }
         [WebMethod]
+        [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
+        public void getFriends()
+        {
+            Profile[] p = new Profile[2];
+            p[0] = new Profile();
+            p[1] = new Profile();
+            p[0].username = "ICantCSS";
+            p[0].age = 20;
+            p[0].picture = "pb.jpg";
+            p[0].location = "Seattle, WA";
+            p[0].games = new Game[3];
+            p[0].games[0] = new Game();
+            p[0].games[1] = new Game();
+            p[0].games[2] = new Game();           
+            p[0].games[0].name = "GTA5";
+            p[0].games[1].name = "Call of Duty";
+            p[0].games[2].name = "Second Life";
+            p[1].username = "IPlayGamz";
+            p[1].age = 68;
+            p[1].picture = "pb.jpg";
+            p[1].location = "Seattle, WA";
+            p[1].games = new Game[3];
+            p[1].games[0] = new Game();
+            p[1].games[1] = new Game();
+            p[1].games[2] = new Game();
+            p[1].games[0].name = "Forza";
+            p[1].games[1].name = "World In Conflict";
+            p[1].games[2].name = "Cryostasis";
+            Context.Response.Clear();
+            Context.Response.ContentType = "text/json";
+            Context.Response.Write("{\"friends\":" + new JavaScriptSerializer().Serialize(p) + "}");
+            Context.Response.End();
+        }
+        [WebMethod]
         [ScriptMethod(UseHttpGet = true,ResponseFormat = ResponseFormat.Json)]
         public void gameSearch(string searchTerm)
         {

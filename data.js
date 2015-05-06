@@ -31,6 +31,7 @@ var profileContent = function (updateFunction) {
     this.picture = "";
     this.location = "";    
     this.games = new Array();
+    this.friends = new Array();
     this.updateFunction = updateFunction;
 };
 //vars = {"username":"string","age":int,"picture":"string"}
@@ -56,6 +57,15 @@ profileContent.prototype.downloadProfileReturn = function (json,locA) {
 profileContent.prototype.addGame = function(gameName){
     this.games[this.games.length] = { "name": gameName };
     this.updateFunction();
+};
+profileContent.prototype.downloadFriends = function () {
+    var download = new ajax();
+    download.setReturnFunction(this.downloadFriendsReturn, this);
+    download.sendAjax("getFriends", {});
+};
+profileContent.prototype.downloadFriendsReturn = function (json,locA) {
+    locA.friends = json.friends;
+    locA.updateFunction();
 };
 profileContent.prototype.getGame = function () {
 

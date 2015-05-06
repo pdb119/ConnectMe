@@ -50,7 +50,7 @@ h3 {
 	text-align: left;
 }
 
- #gamen, #frname {
+ .gamen, #frname {
   float:left;
   padding:0px;
 }

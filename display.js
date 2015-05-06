@@ -30,6 +30,23 @@ function displaySearchGames(games) {
         document.getElementById("gameResults").querySelector("ul").appendChild(template);
     }
 }
+function displayFriendsList(friends) {
+    var firstTemplate = document.getElementById("friendTemplate").cloneNode(true);
+    document.getElementById("friendsSection").innerHTML = "";
+    document.getElementById("friendsSection").appendChild(firstTemplate);
+    for (var i = 0; i < friends.length; i++) {
+        //alert(profile.games[i].name);
+        var template = document.getElementById("friendTemplate").cloneNode(true);
+        template.querySelector("#frname").innerHTML = friends[i].username;
+        template.querySelector("#game1").innerHTML = friends[i].games[0].name;
+        template.querySelector("#game2").innerHTML = friends[i].games[1].name;
+        template.querySelector("#game3").innerHTML = friends[i].games[2].name;
+        template.setAttribute("id", friends[i].username.replace(" ", "") + "FriendDiv");
+        template.setAttribute("onclick", "friendProfileClicked(" + i + ");");
+        template.style.display = "block";
+        document.getElementById("friendsSection").appendChild(template);
+    }
+}
 function drawRadar(users) {
     var c = document.getElementById("radarCanvas");
     var circleRads = new Array();
