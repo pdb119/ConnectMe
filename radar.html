@@ -19,11 +19,62 @@
 
     <!-- our own stylesheet for overrides -->
     <link rel="stylesheet" href="css/styles.css">
+    <style type="text/css">
+        #radarUserDetails{
+            position:absolute;
+            width:175px;
+            height:40px;
+            left:100px;
+            top:100px;
+            display:none;
+            background-color:whitesmoke;
+            padding:4px;
+            color:black;     
+        }
+    </style>
+    <script type="text/javascript" src="control.js"></script>
+    <script type="text/javascript" src="data.js"></script>
+    <script type="text/javascript" src="display.js"></script>
+    <script type="text/javascript">
+        var radarDotLocations;
+        window.onload = function () {
+            document.getElementById("radarCanvas").onmouseup = function (e) {
+                var canvasX = document.getElementById("radarCanvas").offsetLeft;
+                var canvasY = document.getElementById("radarCanvas").offsetTop;
+                var x = e.x - canvasX;
+                var y = e.y - canvasY;
+                var found = false;
+                for (var i = 0; i < radarDotLocations.length; i++) {
+                    if (x > radarDotLocations[i].x - 10 && x < radarDotLocations[i].x + 10 && y > radarDotLocations[i].y - 10 && y < radarDotLocations[i].y + 10) {
+                        var box = document.getElementById("radarUserDetails");
+                        box.style.display = "block";
+                        box.style.left = e.x + "px";
+                        box.style.top = e.y + "px";
+                        box.querySelector(".userName").innerHTML = radarView.nearbyUsers[i].userName;
+                        box.querySelector(".userDistance").innerHTML = radarView.nearbyUsers[i].distance+"ft";
+                        found = true;
+                    } 
+                }
+                if (!found) {
+                    document.getElementById("radarUserDetails").style.display = "none";
+                }
+            };
+            var radarView = new nearbyUsers(drawRadar);
+            radarView.getUsersNearby();
+        };
+        
+
+    </script>
 </head>
 
 
 
 <body>
+    <div id="radarUserDetails">
+        <span class="userName">name</span>
+        <br />
+        <span class="userDistance">dist</span>
+    </div>
     <div class="search-bar">
         <div class="row">
             <div class="input-group">
@@ -52,6 +103,9 @@
                 <img class="map" src="img/icons/mapWhite.png">
             </div>
         </div><!-- /row -->
+    </div>
+    <div id="radarCanvasDiv">
+        <canvas id="radarCanvas" width="350" height="350" style="border:1px solid black;"></canvas>
     </div>
 
     <div class="bottom-menu">

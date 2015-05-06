@@ -10,20 +10,26 @@ ajax.prototype.setReturnFunction = function (returnFunction,thisObject) {
 ajax.prototype.sendAjax = function (method,vars) {
     var xmlHttp = new XMLHttpRequest();
     var th = this;
-    xmlHttp.onload = this.returnFunction;
-    ajaxDictionary[xmlHttp] = this.thisObject;
+    xmlHttp.onload = this.ajaxReturnFunction;
+    ajaxDictionary[xmlHttp] = this;
     xmlHttp.open("POST", "data.asmx/" + method);
     xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlHttp.setRequestHeader("Content-length", vars.length);
     xmlHttp.setRequestHeader("Connection", "close");
     xmlHttp.send(vars);
 };
+ajax.prototype.ajaxReturnFunction = function () {
+    var thisLoc = ajaxDictionary[this];
+    delete ajaxDictionary[this];
+    thisLoc.returnFunction(JSON.parse(this.responseText), thisLoc.thisObject);
+};
+
+
 var profileContent = function (updateFunction) {
     this.username = "";
     this.age = 0;
     this.picture = "";
-    this.location = "";
-    //
+    this.location = "";    
     this.games = new Array();
     this.updateFunction = updateFunction;
 };
@@ -39,10 +45,7 @@ profileContent.prototype.downloadProfile = function () {
     download.setReturnFunction(this.downloadProfileReturn,this);
     download.sendAjax("getProfile", {});
 };
-profileContent.prototype.downloadProfileReturn = function () {
-    var json = JSON.parse(this.responseText);
-    var locA = ajaxDictionary[this];
-    delete ajaxDictionary[this];
+profileContent.prototype.downloadProfileReturn = function (json,locA) {
     locA.username = json.username;
     locA.age = json.age;
     locA.picture = json.picture;
@@ -58,6 +61,8 @@ profileContent.prototype.getGame = function () {
 
 };
 
+
+
 var gameSearch = function (updateFunction) {
     this.gameList = new Array();
     this.updateFunction = updateFunction;
@@ -67,12 +72,28 @@ gameSearch.prototype.search = function(term){
     aj.setReturnFunction(this.returnFunction, this);
     aj.sendAjax("gameSearch", "searchTerm="+term);
 };
-gameSearch.prototype.returnFunction = function () {
-    var json = JSON.parse(this.responseText);
-    var locA = ajaxDictionary[this];
-    delete ajaxDictionary[this];
+gameSearch.prototype.returnFunction = function (json,locA) {
     for (var i = 0; i < json.games.length; i++) {
         locA.gameList[locA.gameList.length] = json.games[i];
     }
     locA.updateFunction();
+};
+
+
+var nearbyUsers = function (updateFunction) {
+    this.updateFunction = updateFunction;
+    //{"UserId":,"UserName":,"Distance":}
+    this.nearbyUsers = new Array();
+};
+nearbyUsers.prototype.getUsersNearby = function () {
+    var aj = new ajax();
+    aj.setReturnFunction(this.returnFunction, this);
+    aj.sendAjax("getNearby", "");
+};
+nearbyUsers.prototype.returnFunction = function (json, locA) {
+    locA.nearbyUsers = json.nearbyUsers;
+    locA.updateFunction(json.nearbyUsers);
+};
+nearbyUsers.prototype.applyFilter = function () {
+
 };

@@ -1,6 +1,6 @@
 ﻿var prof;
 var gSearch;
-window.onload = function () {
+function profileLoad() {
     prof = new profileContent(profileUpdated);
     prof.downloadProfile();
     gSearch = new gameSearch(searchGamesReturn);

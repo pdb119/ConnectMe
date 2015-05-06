@@ -55,6 +55,29 @@ namespace ConnectMe
             Context.Response.Write("{\"games\":"+new JavaScriptSerializer().Serialize(p)+"}");
             Context.Response.End();
         }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
+        public void getNearby()
+        {
+            NearbyUser[] p = new NearbyUser[3];
+            p[0] = new NearbyUser();
+            p[1] = new NearbyUser();
+            p[2] = new NearbyUser();
+            p[0].userId = 1;
+            p[0].userName = "Jason Aldean";
+            p[0].distance = 45;
+            p[1].userId = 2;
+            p[1].userName = "Lee Brice";
+            p[1].distance = 11;
+            p[2].userId = 3;
+            p[2].userName = "Rocket Raccoon";
+            p[2].distance = 104;
+            Context.Response.Clear();
+            Context.Response.ContentType = "text/json";
+            Context.Response.Write("{\"nearbyUsers\":" + new JavaScriptSerializer().Serialize(p) + "}");
+            Context.Response.End();
+        }
         
     }
 }

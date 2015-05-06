@@ -9,6 +9,12 @@
     <script type="text/javascript" src="data.js"></script>
     <script type="text/javascript" src="display.js"></script>
     <script type="text/javascript" src="control.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            profileLoad();
+        }
+
+    </script>
 	<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
 
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -76,9 +82,11 @@
 					</div>
 				</div>
 				<div id="gameResults">
-					<li id="gameResultTemplate" style="display:none;">
-						<ul><h3><span class="gameResultTitle">no title</span><i class="addGameButton fa fa-plus-circle"></i> </h3> </ul>
-					</li>
+                    <ul>
+                        <li id="gameResultTemplate" style="display:none;">
+                            <h3><span class="gameResultTitle">no title</span><i class="addGameButton fa fa-plus-circle"></i> </h3>
+                        </li>                        
+                    </ul>
 				</div>
 		      </div>
 		    </div>
