@@ -14,6 +14,53 @@ body {
   //max-height: 800px;*/
 }
 
+#forms {
+  padding: 10px;
+}
+
+label {
+  float:left;
+}
+#plus {
+  text-align: center;
+}
+
+#signup {
+  float:left;
+}
+
+#ppic {
+  float:left;
+  border:4px solid white;
+  width:75px;
+  height:75px;
+  padding-bottom: 5px;
+}
+
+#empgamepic {
+  float:left;
+  border:4px solid white;
+  width:50px;
+  height:50px;
+  padding: 10px;
+}
+
+#games {
+  text-align: left;
+  padding: 20px;
+}
+
+.form-control {
+  border-radius: 50px;
+}
+
+#navwrapper {
+  height: 50px%;
+}
+#navigator {
+  height:50px;
+}
+
 div {
   text-align: center;
 }
@@ -35,9 +82,25 @@ div {
   float:left;
 }
 
-form { 
-margin: 0 auto; 
-width: 40%;
+form {
+  margin: 0 auto;
+  width: 100%;
+}
+
+#dob{
+  width:30%;
+}
+
+#supbutt {
+ float: right;
+ padding:10px;
+}
+
+#gps {
+  text-align: left;
+}
+#date {
+  text-align: left;
 }
 
 h1 {
@@ -135,6 +198,7 @@ h3 {
 
 .wrapper {
   float:right;
+  padding: 10px;
 }
 
 input#toggle {
