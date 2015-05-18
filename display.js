@@ -55,17 +55,20 @@ function drawRadar(users) {
         circle.beginPath();
         circle.arc(175, 175, rad, 0, 2 * Math.PI);
         circle.lineWidth = 4;
+        circle.strokeStyle= "#FFFFFF";
         circle.stroke();
         circleRads[circleRads.length] = rad;
     }
     circle.beginPath();
+    circle.fillStyle = "#FFFFFF";
     circle.arc(175, 175, 20, 0, 2 * Math.PI);
-    circle.fill();
+    circle.fill();    
     radarDotLocations = new Array();
     for (var i = 0; i < users.length; i++) {
+        circle.fillStyle = "#000000";
         var dist = users[i].distance;
         var closestCircle = circleRads[0];
-        var shortest = Math.abs(dist-circleRads[0]);        
+        var shortest = Math.abs(dist-circleRads[0]);
         for (var j = 1; j < circleRads.length; j++) {
             var calculatedShortPath = Math.min(shortest, Math.abs(dist - circleRads[j]));
             if (shortest > calculatedShortPath) {
@@ -80,6 +83,9 @@ function drawRadar(users) {
         userDot.beginPath();
         circle.arc(x, y, 10, 0, 2 * Math.PI);
         circle.fill();
+        circle.font = "12px Arial";
+        circle.fillStyle = "#003300";
+        circle.fillText(users[i].userName, x + 12, y);
         radarDotLocations[i] = { "x": x, "y": y };
     }
 }
