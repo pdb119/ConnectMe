@@ -18,6 +18,25 @@ body {
   padding: 10px;
 }
 
+#level{
+  float:right;
+  width:100px;
+  height:100px;
+}
+
+#doneit {
+  float:right;
+  margin-right:10%; 
+}
+
+#editit {
+  margin-top: 10%;
+}
+
+#GID {
+  float:right;
+}
+
 label {
   float:left;
 }
