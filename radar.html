@@ -37,7 +37,11 @@
     <script type="text/javascript" src="display.js"></script>
     <script type="text/javascript">
         var radarDotLocations;
-        window.onload = function () {
+        var radarView;
+        function updateLocationIntervalHandler() {
+            radarView.updateLocation();
+        }
+        window.onload = function () {            
             document.getElementById("radarCanvas").onmouseup = function (e) {
                 var canvasX = document.getElementById("radarCanvas").offsetLeft;
                 var canvasY = document.getElementById("radarCanvas").offsetTop;
@@ -59,8 +63,11 @@
                     document.getElementById("radarUserDetails").style.display = "none";
                 }
             };
-            var radarView = new nearbyUsers(drawRadar);
+            radarView = new nearbyUsers(drawRadar);
             radarView.getUsersNearby();
+            //radarView.updateLocation();
+            radarView.updateLocation();
+            setInterval("updateLocationIntervalHandler()", 10000);
         };
         
 

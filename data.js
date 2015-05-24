@@ -100,6 +100,16 @@ nearbyUsers.prototype.getUsersNearby = function () {
     aj.setReturnFunction(this.returnFunction, this);
     aj.sendAjax("getNearby", "");
 };
+nearbyUsers.prototype.updateLocation = function(){
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.updateLocationReturn);
+    } else {
+        //location services off
+    }
+};
+nearbyUsers.prototype.updateLocationReturn = function (pos) {
+    //alert(pos.coords.latitude);
+}
 nearbyUsers.prototype.returnFunction = function (json, locA) {
     locA.nearbyUsers = json.nearbyUsers;
     locA.updateFunction(json.nearbyUsers);
