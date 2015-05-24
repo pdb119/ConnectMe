@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
@@ -20,12 +21,23 @@ namespace ConnectMe
     {
         //will be cookie based eventually
         private string profileId = "1";
+        private Profile p;
         [WebMethod]
         [ScriptMethod(UseHttpGet = true,ResponseFormat = ResponseFormat.Json)]
         public void getProfile()
         {
-            Profile p = new Profile();
-            p.username = "pdb119";
+            SqlConnection conn = new SqlConnection("Data Source=tczkks6plq.database.windows.net;Initial Catalog=bradypat;Integrated Security=False;User ID=connectme;Password=AmericanHorses!;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False");
+            SqlCommand getProfile = new SqlCommand("SELECT * FROM Profile WHERE profileId=@profileid",conn);
+            getProfile.Parameters.Add(new SqlParameter("profileid", profileId));
+            SqlDataReader profileReturn = getProfile.ExecuteReader();
+            p = new Profile();
+            p.username = "nodb";
+            while (profileReturn.Read())
+            {
+                p.username = (string)profileReturn["username"];
+
+            }
+            
             p.age = 22;
             p.picture = "pb.jpg";
             p.location = "Seattle, WA";
