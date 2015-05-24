@@ -100,7 +100,7 @@
                 <label for="cmn-toggle-4"></label>
             </div>
             <div class="question2">
-                <img class="map" src="img/icons/mapWhite.png">
+                <img class="map" src="img/icons/list.svg">
             </div>
         </div><!-- /row -->
     </div>
@@ -118,5 +118,78 @@
         <!-- last icon place holder for setting icon -->
         <div>
     </div>
+
+
+<!-- list section -->
+    <div id="friendsSection">
+        <div id="friendTemplate" class="game" style="display:none;">
+            <div id="schat">
+                <img class="myProfile" src="img/icons/msgWhite.png">
+                <img class="myProfile" src="img/icons/friend.png">
+            </div>
+            <div id="profile">
+            <img id="profilepic" src="img/icons/profile.png">
+            <h1 id="frname">Name</h1>
+            <div class="gamen">
+                <br>
+                <h3 class="gamen" id="game1">game</h3>
+                <br>
+                <h3 class="gamen" id="game2">game</h3>
+                <br>
+                <h3 class="gamen" id="game3">game</h3>
+            </div>
+            
+            </div>
+
+        <div id="games">
+
+        </div>
+    </div>
+        </div>
+    <div id="friendProfileDiv" style="display:none;">
+        <div class="heading">
+            <img class="profilePic" src="img/icons/myProfileWhite.png">
+            <div class="editButton">
+                <button onclick="closeFriendProfile();" type="button" class="btn btn-default btn-sm" aria-label="Edit">
+                    <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                </button>
+                <!-- cancel goes back to previous page -->
+            </div>
+            <div class="profileDetails">
+                <h1 id="profileNameSpan">Name</h1>
+                <h2 id="profileAgeSpan">Age</h2>
+                <h2 id="profileLocationSpan">Location</h2>
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+
+
+
+        <div id="gamesDiv">
+            <div id="gameTemplate" class="gameSection" style="display:none;">
+                <div class="editButton">
+                    <button type="button" class="btn btn-default btn-sm" aria-label="Edit">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="game">
+                    <h1>Halo</h1>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
 </body>
 </html>
