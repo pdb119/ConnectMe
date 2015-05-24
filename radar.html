@@ -41,7 +41,16 @@
         function updateLocationIntervalHandler() {
             radarView.updateLocation();
         }
-        window.onload = function () {            
+        window.onload = function () {
+            document.getElementById("cmn-toggle-4").onclick = function (e) {
+                if (document.getElementById("radarCanvasDiv").style.display == "none") {
+                    document.getElementById("friendsSection").style.display = "none";
+                    document.getElementById("radarCanvasDiv").style.display = "block";
+                } else {
+                    document.getElementById("friendsSection").style.display = "block";
+                    document.getElementById("radarCanvasDiv").style.display = "none";
+                }
+            }
             document.getElementById("radarCanvas").onmouseup = function (e) {
                 var canvasX = document.getElementById("radarCanvas").offsetLeft;
                 var canvasY = document.getElementById("radarCanvas").offsetTop;
@@ -128,8 +137,8 @@
 
 
 <!-- list section -->
-    <div id="friendsSection">
-        <div id="friendTemplate" class="game" style="display:none;">
+    <div id="friendsSection" style="display:none;">
+        <div id="friendTemplate" class="game">
             <div id="schat">
                 <img class="myProfile" src="img/icons/msgWhite.png">
                 <img class="myProfile" src="img/icons/friend.png">
