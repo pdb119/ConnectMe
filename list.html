@@ -74,6 +74,43 @@
     </div>
 
 
+    <div id="friendProfileDiv" style="display:none;">
+        <div class="heading">
+            <img class="profilePic" src="img/icons/myProfileWhite.png">
+            <div class="editButton">
+                <button onclick="closeFriendProfile();" type="button" class="btn btn-default btn-sm" aria-label="Edit">
+                    <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                </button>
+                <!-- cancel goes back to previous page -->
+            </div>
+            <div class="profileDetails">
+                <h1 id="profileNameSpan">Name</h1>
+                <h2 id="profileAgeSpan">Age</h2>
+                <h2 id="profileLocationSpan">Location</h2>
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+
+
+
+        <div id="gamesDiv">
+            <div id="gameTemplate" class="gameSection" style="display:none;">
+                <div class="editButton">
+                    <button type="button" class="btn btn-default btn-sm" aria-label="Edit">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="game">
+                    <h1>Halo</h1>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 
     
 
@@ -81,7 +118,7 @@
         <div id="navwrapper" class="row">
             <div id="innerwrapper" class="col-xs-2 col-md-2"> <a href="radar.html"><img id="navigator"  class="map" src="img/icons/mapWhite.png"></a> </div>
             <div id="innerwrapper" class="col-xs-2 col-md-2"> <a href="profile.html"><img id="navigator" class="myProfile" src="img/icons/myProfileB.png"></a> </div>
-            <div  id="innerwrapper" class="col-xs-2 col-md-2"> <a href="radar.html"><img id="navigator" class="msg" src="img/icons/msgWhite.png"></a> </div>
+            <div  id="innerwrapper" class="col-xs-2 col-md-2"> <a href="msg.html"><img id="navigator" class="msg" src="img/icons/msgWhite.png"></a> </div>
             <div  id="innerwrapper" class="col-xs-2 col-md-2"> <a href="friendlist.html"><img id="navigator" class="friends" src="img/icons/friendsWhite.png"></a> </div>
             <div id="innerwrapper" class="col-xs-2 col-md-2"> <a href="settings.html"><img id="navigator" class="friends" src="img/icons/settingsWhite.png"></a> </div>
         <!-- last icon place holder for setting icon -->

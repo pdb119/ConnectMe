@@ -1,7 +1,7 @@
-﻿<!doctype html>
+<!doctype html>
 <html>
 <head>
-	<title>Friend Profile</title>
+	<title>Profile</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="css/styles.css">
 	<meta name="author" content="lithach">
@@ -27,65 +27,42 @@
 
 
 <body>
-	<div class="heading">
-		<img class="profilePic" src="img/icons/myProfileWhite.png">
-		<div class="editButton">
-			<button type="button" class="btn btn-default btn-sm" aria-label="Edit">
-					<span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
-			</button>
-			<!-- cancel goes back to previous page -->
-		</div>
-		<div class="profileDetails">
-            <h1 id="profileNameSpan">Name</h1>
-            <h2 id="profileAgeSpan">Age</h2>
-            <h2 id="profileLocationSpan">Location</h2>
-		</div>	
+	<div>
+		<h1 id="editit">Edit game Profile</h1>
 	</div>
 
-	<br>
-	<br>
-
-	<div id="options">
-		<!-- msg -->
-		<a href="">	
-			<img class="setting" src="img/icons/reportWhite.png">
-		</a> 
-		<!-- add friend -->
-		<a href="">	
-			<img class="setting" src="img/icons/reportWhite.png">
-		</a>
-		<!-- schedule -->
-		<a href="">	
-			<img class="setting" src="img/icons/reportWhite.png">
-		</a>
-		<!-- report -->
-		<a href="">	
-			<img class="setting" src="img/icons/reportWhite.png">
-		</a>
-	</div>
-
-	
-
-    <div id="gamesDiv">
-        <div id="gameTemplate" class="gameSection" style="display:none;">
-            <div class="editButton">
-                <button type="button" class="btn btn-default btn-sm" aria-label="Edit">
-                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                </button>
-            </div>
-            <div class="game">
-                <h1>Halo</h1>
-            </div>
-
-        </div>
+	<div class="container">
+  <div class="row">
+  	<div class="col-xs-12">
+    	<h1>Game</h1>
+    	<h1 id="GID">Starcraft II</h1>
     </div>
+    <div class="col-xs-12">
+    	<h1>Gamer ID</h1>
+    	<h1 id="GID">Chickenbuttz</h1>
+    </div>
+    <div class="col-xs-12">
+    	<img id="level" src="img/icons/diamond-starcraft-2.png">
+		<h1>Rank</h1>
+    </div>
+    <div class="col-xs-12">
+		<h1>Level</h1>
+		<h1 id="GID">50</h1>
+    </div>
+    <div class="col-xs-12">
+		<h1>Favorite Champion/Race</h1>
+		<h1 id="GID">Protess</h1>
+    </div>
+  </div>
+</div>
 
-	
-	<div class="container-fluid bottom-menu">
+	<button id="doneit" type="button" class="btn btn-primary">Done</button>
+
+    <div class="container-fluid bottom-menu">
     	<div id="navwrapper" class="row">
     		<div id="innerwrapper" class="col-xs-2 col-md-2"> <a href="radar.html"><img id="navigator"  class="map" src="img/icons/mapWhite.png"></a> </div>
     		<div id="innerwrapper" class="col-xs-2 col-md-2"> <a href="profile.html"><img id="navigator" class="myProfile" src="img/icons/myProfileB.png"></a> </div>
-    		<div  id="innerwrapper" class="col-xs-2 col-md-2"> <a href="msg.html"><img id="navigator" class="msg" src="img/icons/msgWhite.png"></a> </div>
+    		<div  id="innerwrapper" class="col-xs-2 col-md-2"> <a href="radar.html"><img id="navigator" class="msg" src="img/icons/msgWhite.png"></a> </div>
     		<div  id="innerwrapper" class="col-xs-2 col-md-2"> <a href="friendlist.html"><img id="navigator" class="friends" src="img/icons/friendsWhite.png"></a> </div>
     		<div id="innerwrapper" class="col-xs-2 col-md-2"> <a href="settings.html"><img id="navigator" class="friends" src="img/icons/settingsWhite.png"></a> </div>
         <!-- last icon place holder for setting icon -->

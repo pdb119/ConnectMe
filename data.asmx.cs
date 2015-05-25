@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
@@ -20,24 +21,40 @@ namespace ConnectMe
     {
         //will be cookie based eventually
         private string profileId = "1";
+        private Profile p;
         [WebMethod]
         [ScriptMethod(UseHttpGet = true,ResponseFormat = ResponseFormat.Json)]
         public void getProfile()
         {
-            Profile p = new Profile();
-            p.username = "pdb119";
+            SqlConnection conn = new SqlConnection("Data Source=sqvuyen40w.database.windows.net;Initial Catalog=connectme;Integrated Security=False;User ID=connectme;Password=AmericanHorses!;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False");            
+            SqlCommand getProfile = new SqlCommand("SELECT * FROM Profile WHERE profileId=@profileid",conn);
+            conn.Open();
+            getProfile.Parameters.Add(new SqlParameter("profileid", profileId));
+            SqlDataReader profileReturn = getProfile.ExecuteReader();
+            p = new Profile();
+            p.username = "nodb";
+            while (profileReturn.Read())
+            {
+                p.username = (string)profileReturn["username"];
+
+            }
+            profileReturn.Close();
+            SqlCommand getGames = new SqlCommand("SELECT * FROM ProfileGame JOIN Game ON ProfileGame.gameId=Game.gameId WHERE ProfileGame.profileId=@profileid", conn);
+            getGames.Parameters.Add(new SqlParameter("profileid", profileId));
+            SqlDataReader gamesReturn = getGames.ExecuteReader();
+            List<Game> gamesList = new List<Game>();
+            while (gamesReturn.Read())
+            {
+                Game g = new Game();
+                g.name = (string)gamesReturn["gameName"];
+                gamesList.Add(g);
+            }
+            gamesReturn.Close();
+            conn.Close();
             p.age = 22;
             p.picture = "pb.jpg";
             p.location = "Seattle, WA";
-            p.games = new Game[4];
-            p.games[0] = new Game();
-            p.games[1] = new Game();
-            p.games[2] = new Game();
-            p.games[3] = new Game();
-            p.games[0].name = "Halo 4";
-            p.games[1].name = "Minecraft";
-            p.games[2].name = "Gears of War 3";
-            p.games[3].name = "Far Cry 4";
+            p.games = gamesList.ToArray();
             Context.Response.Clear();
             Context.Response.ContentType = "text/json";
             Context.Response.Write(new JavaScriptSerializer().Serialize(p));

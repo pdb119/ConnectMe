@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-	<title>General</title>
+	<title>Message</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="css/styles.css">
 	<meta name="author" content="lithach">
@@ -19,34 +19,23 @@
 
 	<!-- our own stylesheet for overrides -->
     <link rel="stylesheet" href="css/styles.css">
+    <script type="text/javascript" src="data.js"></script>
+    <script type="text/javascript" src="display.js"></script>
+    <script type="text/javascript" src="control.js"></script>
+    <script type="text/javascript">
+        var currentPage = "friends";
+        window.onload = function () {
+            friendsLoad();
+        }
 
-    <script src="jquery.js"></script>
-    <script src="jquery-1.11.2.min.js"></script>
-	<script src="bootstrap-switch.js"></script>
+    </script>
 </head>
 
 
 
 <body>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-		<h1>Search Radius</h1>
-    </div>
-    <div class="col-xs-12">
-    	<h1>Friendlists</h1>
-    </div>	
-    <div class="col-xs-12">
-    	<h1>Preferred Units</h1>
-    </div>
-    <div class="col-xs-12">
-    	<h1>Desired Age Range</h1>
-    </div>
-    <div class="col-xs-12">
-        <h1>Default Listview</h1>
-    </div>
-  </div>
-</div>
+	
+
 
     <div class="container-fluid bottom-menu">
         <div id="navwrapper" class="row">
@@ -59,4 +48,6 @@
         <div>
     </div>
 </body>
+
+
 </html>
