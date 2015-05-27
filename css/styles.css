@@ -359,10 +359,12 @@ h3 {
 .game {
   border-radius: 25px;
   border: 2px solid white;
-  padding: 30px; 
+  padding: 2%; 
   width: 100%;
   height: 120px; 
   text-align: center;
+  margin:1%;
+
 }
 
 .modal-content {
