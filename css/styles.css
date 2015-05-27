@@ -363,8 +363,8 @@ h3 {
   width: 80%;
   height: 120px; 
   text-align: center;
-  margin:1%;
-
+  margin: 0 auto;
+  margin-bottom: 1%;
 }
 
 .modal-content {
