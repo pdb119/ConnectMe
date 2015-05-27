@@ -91,7 +91,7 @@ a:link {
 }
 
 
-#schedule-form {
+.schedule-form {
   background-color: #06364a;
   border-radius: 10px;
   position: absolute;
