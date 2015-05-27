@@ -649,6 +649,37 @@ i {
 }
 
 
+#popup {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  border:1px;
+  border-color: #06364A;
+  border-radius: 20px;
+  border-style: solid;
+  background-color: #06364A;
+  height: 50%;
+}
+
+#normaltext {
+  color:black;
+  width:50%;
+  margin-right: 10%;
+  margin-top: 10%;
+  margin-bottom:5%;
+  text-decoration: none;
+  border-radius: 20px;
+}
+
+#popupbutt {
+  margin-bottom: 10%;
+}
+
+#ppclose {
+  float:right;
+  padding: 5px;
+}
+
 /* ============================================================
  All the Toggle css, DO NOT TOUCH!!!
   COMMON
