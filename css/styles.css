@@ -148,6 +148,7 @@ h6 {
 #doneit {
   float:right;
   margin-right:10%; 
+  margin-top:5%;
 }
 
 #editit {
@@ -684,30 +685,19 @@ i {
 }
 
 
-#popup {
-  width: 50%;
-  text-align: center;
-  border:1px;
-  border-color: #06364A;
-  border-radius: 20px;
-  border-style: solid;
-  background-color: #06364A;
-  height: 50%;
-  margin: 0 auto;
-}
-
 #normaltext {
   color:black;
   width:50%;
   margin-right: 10%;
-  margin-top: 1%;
-  margin-bottom:.1%;
+  margin-top: 2%;
+  margin-bottom:2%;
   text-decoration: none;
   border-radius: 20px;
+  padding-top:1%;
 }
 
 #popupbutt {
-  margin-bottom: 10%;
+  margin-bottom: 2%;
 }
 
 #ppclose {
@@ -837,5 +827,9 @@ input.cmn-toggle-round-flat:checked + label:after {
   padding: 10px;
 }
 
-
+.sctooicon {
+  width:10%;
+  height:20%;
+  padding:1%;
+}
 
