@@ -46,9 +46,11 @@
                 if (document.getElementById("radarCanvasDiv").style.display == "none") {
                     document.getElementById("friendsSection").style.display = "none";
                     document.getElementById("radarCanvasDiv").style.display = "block";
+                    //drawRadar(radarView);
                 } else {
                     document.getElementById("friendsSection").style.display = "block";
                     document.getElementById("radarCanvasDiv").style.display = "none";
+                    displayUsersList(radarView);
                 }
             }
             document.getElementById("radarCanvas").onmouseup = function (e) {
@@ -126,7 +128,7 @@
 
 <!-- list section -->
     <div id="friendsSection" style="display:none;">
-        <div id="friendTemplate" class="game">
+        <div id="friendTemplate" class="game" style="display:none;">
             <div id="schat">
                 <a href="msg.html"><img class="myProfile" src="img/icons/msgWhite.png"></a>
                 <img class="myProfile" src="img/icons/friend.png">

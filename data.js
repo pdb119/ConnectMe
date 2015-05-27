@@ -106,6 +106,9 @@ nearbyUsers.prototype.updateLocation = function(){
     } else {
         //location services off
     }
+    if (document.getElementById("radarCanvasDiv").style.display == "none") {
+        //do something
+    }
 };
 nearbyUsers.prototype.updateLocationReturn = function (pos) {
     //alert(pos.coords.latitude);

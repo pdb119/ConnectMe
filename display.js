@@ -47,6 +47,17 @@ function displayFriendsList(friends) {
         document.getElementById("friendsSection").appendChild(template);
     }
 }
+function displayUsersList(users) {
+    document.getElementById("friendsList").innerHTML = "";
+    for (var i = 0; i < users.length; i++) {
+        var template = document.getElementById("friendTemplate").cloneNode(true);
+        template.querySelector("#frname").innerHTML = users[i].username;
+        template.style.display = "block";
+        template.setAttribute("id", users[i].userName.replace(" ", "") + "ListUser");
+        document.getElementById("friendsList").appendChild(template);
+        //users[i].distance;
+        //users[i].userName;
+}
 function drawRadar(users) {
     var c = document.getElementById("radarCanvas");
     var circleRads = new Array();
