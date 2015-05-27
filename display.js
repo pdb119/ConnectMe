@@ -79,20 +79,20 @@ function drawRadar(users) {
         circle.beginPath();
         circle.arc(175, 175, rad, 0, 2 * Math.PI);
         circle.lineWidth = 4;
-        circle.strokeStyle= "#FFFFFF";
+        circle.strokeStyle = "#FFFFFF";
         circle.stroke();
         circleRads[circleRads.length] = rad;
     }
     circle.beginPath();
     circle.fillStyle = "#FFFFFF";
     circle.arc(175, 175, 20, 0, 2 * Math.PI);
-    circle.fill();    
+    circle.fill();
     radarDotLocations = new Array();
     for (var i = 0; i < users.length; i++) {
         circle.fillStyle = "#000000";
         var dist = users[i].distance;
         var closestCircle = circleRads[0];
-        var shortest = Math.abs(dist-circleRads[0]);
+        var shortest = Math.abs(dist - circleRads[0]);
         for (var j = 1; j < circleRads.length; j++) {
             var calculatedShortPath = Math.min(shortest, Math.abs(dist - circleRads[j]));
             if (shortest > calculatedShortPath) {
@@ -101,8 +101,8 @@ function drawRadar(users) {
             }
         }
         var circleRadians = Math.random() * 2 * Math.PI;
-        var x = 175.0+(Math.sin(circleRadians) * closestCircle);
-        var y = 175.0-(Math.cos(circleRadians) * closestCircle);
+        var x = 175.0 + (Math.sin(circleRadians) * closestCircle);
+        var y = 175.0 - (Math.cos(circleRadians) * closestCircle);
         var userDot = c.getContext("2d");
         userDot.beginPath();
         circle.arc(x, y, 10, 0, 2 * Math.PI);
@@ -112,7 +112,30 @@ function drawRadar(users) {
         circle.fillText(users[i].userName, x + 12, y);
         radarDotLocations[i] = { "x": x, "y": y };
     }
-    function displayConversations(cs) {
-
-    }
 }
+    function displayConversations(cs) {
+        var firstTemplate = document.getElementById("conversationTemplate").cloneNode(true);
+        document.getElementById("conversations").innerHTML = "";
+        document.getElementById("conversations").appendChild(firstTemplate);
+        for (var i = 0; i < cs.length; i++) {
+            var template = document.getElementById("conversationTemplate");
+            template.querySelector("#name").innerHTML = cs[i].name;
+            template.querySelector(".templateLink").setAttribute("onclick", "conversationClicked(" + cs[i].id + ");");
+            template.setAttribute("id", cs[i].id + "ConversationLink");
+            template.style.display = "block";
+            document.getElementById("conversations").appendChild(template);
+        }
+    }
+    function displayConversation(messages) {
+        var firstTemplate = document.getElementById("messageTemplate").cloneNode(true);
+        document.getElementById("messagesDiv").innerHTML = "";
+        document.getElementById("messagesDiv").appendChild(firstTemplate);
+        //alert(messages.length);
+        for (var i = 0; i < messages.length; i++) {
+            var template = document.getElementById("messageTemplate").cloneNode(true);
+            template.querySelector("#chatother").innerHTML = messages[i].message;
+            template.setAttribute("id", messages[i].id + "Message");
+            template.style.display = "block";
+            document.getElementById("messagesDiv").appendChild(template);
+        }
+    }

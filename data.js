@@ -147,28 +147,31 @@ nearbyUsers.prototype.applyFilter = function () {
 
 var messagingClient = function () {
     this.conversations = new Array();
+    this.messages = new Array();    
 };
 messagingClient.prototype.getConversations = function(){
     var convGet = new ajax();
-    convGet.setReturnFunction(this.returnFunction, this);
+    convGet.setReturnFunction(this.getConversationsReturn, this);
     convGet.sendAjax("getConversations", "");
 };
 messagingClient.prototype.getConversation = function (convId) {
+    this.messages = new Array();
     var convGet = new ajax();
-    convGet.setReturnFunction(this.returnFunction, this);
+    convGet.setReturnFunction(this.getConversationReturn, this);
     convGet.sendAjax("getConversation", "conversationId="+convId);
 };
 messagingClient.prototype.getConversationsReturn = function (json, locA) {
-    for (var i = 0; i < conversations.length; i++) {
+    for (var i = 0; i < json.conversations.length; i++) {
         locA.conversations[locA.conversations.length] = { "id": json.conversations[i].id, "name": json.conversations[i].name };
     }
-    
+    locA.conversationUpdateFunction();
 };
 messagingClient.prototype.getConversationReturn = function (json, locA) {
-
-};
-messagingClient.prototype.getConversation = function(){
-
+    for (var i = 0; i < json.conversation.messages.length; i++) {
+        var message = json.conversation.messages[i];
+        locA.messages[locA.messages.length] = { "id": message.id, "fromId": message.from.profileId, "from": message.from.username, "message": message.message };
+    }
+    locA.messageUpdateFunction();
 };
 messagingClient.prototype.checkForMessages = function () {
 

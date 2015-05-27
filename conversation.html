@@ -1,31 +1,32 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
 <head>
-	<title>Conversations</title>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="css/styles.css">
-	<meta name="author" content="lithach">
-	<link rel="shortcut icon" href="img/icons/logo.png">
-	
+    <title>Conversations</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/styles.css">
+    <meta name="author" content="lithach">
+    <link rel="shortcut icon" href="img/icons/logo.png">
 
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
-	<!-- our own stylesheet for overrides -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- our own stylesheet for overrides -->
     <link rel="stylesheet" href="css/styles.css">
     <script type="text/javascript" src="data.js"></script>
     <script type="text/javascript" src="display.js"></script>
     <script type="text/javascript" src="control.js"></script>
     <script type="text/javascript">
-        var currentPage = "friends";
+        //var currentPage = "friends";
+
         window.onload = function () {
-            friendsLoad();
+            messagingLoad();
         }
 
     </script>
@@ -34,37 +35,106 @@
 
 
 <body>
-	
+
     <!-- list of conversations -->
-    <a href="msg.html">
-        <div class="conversation">
+    <div id="conversations">
+        <div id="conversationTemplate" style="display:none;">
+            <a class="templateLink" href="#">
+                <div class="conversation">
+                    <img id="msghead" src="img/icons/head.svg">
+                    <p id="name">conv name</p>
+                    <p id="chatother"> (message preview)</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div id="conversation" style="display:none;">
+        <div id="back">
+            <a href="javascript:conversations();"><img id="backbutton" src="img/icons/backbutton.svg"></a>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <!-- the actual conversation between two people -->
+        <div id="messagesDiv">
+        <div id="messageTemplate" style="display:none;" class="chat">
             <img id="msghead" src="img/icons/head.svg">
-            <p id="name">Eric</p>
-            <p id="chatother"> Where are you buddy?</p>  
+            <p id="chatother"> Where are you buddy?</p>
         </div>
-    </a>
+            </div>
 
-    <a href="msg.html">
-        <div class="conversation">
-            <img id="msghead" src="img/icons/playericongreen.svg">
-            <p id="name">Sam</p>
-            <p id="chatother">Almost there...</p>
+
+        <div class="container-fluid bottom-menu bottomchat">
+
+            <!--send a message box -->
+            <div id="new-msg">
+                <textarea class="form-control" id="textBox" rows="3" placeholder="Enter Message"></textarea>
+            </div>
+
+            <!-- placeholder for text, emoticons, pictures, schedule button -->
+            <div id="msg-buttons">
+                <img class="chat-buttons" src="img/icons/Aa.svg">
+                <img class="chat-buttons" src="img/icons/smile.svg">
+                <img class="chat-buttons" src="img/icons/image.svg">
+                <img class="chat-buttons" src="img/icons/blueschedule.svg">
+            </div>
         </div>
-    </a>
+
+        <!-- the popup for scheduling a game-->
+        <div id="schedule-form" style="display:none;">
+            <!-- close box -->
+            <img id="exit" src="img/icons/closebutton.svg">
+
+            <h5>Schedule Game</h5>
+
+            <h6>
+                Who
+                <input type="text" class="game-form" id="normal-text">
+            </h6>
+
+            <h6>
+                When
+                <input type="text" class="game-form" id="normal-text">
+            </h6>
+
+            <h6>
+                Where
+                <input type="text" class="game-form" id="normal-text">
+            </h6>
+
+            <h6>
+                Game
+                <input type="text" class="game-form" id="normal-text">
+            </h6>
+
+            <!-- close box -->
+            <div id="request">
+                <p>Send Request</p>
+            </div>
+        </div>
 
 
 
-    
+
+
+    </div>
+
+
+
 
     <div class="container-fluid bottom-menu">
         <div id="navwrapper" class="row">
-            <div id="innerwrapper" class="col-xs-2 col-md-2"> <a href="radar.html"><img id="navigator"  class="map" src="img/icons/mapWhite.png"></a> </div>
+            <div id="innerwrapper" class="col-xs-2 col-md-2"> <a href="radar.html"><img id="navigator" class="map" src="img/icons/mapWhite.png"></a> </div>
             <div id="innerwrapper" class="col-xs-2 col-md-2"> <a href="profile.html"><img id="navigator" class="myProfile" src="img/icons/myProfileB.png"></a> </div>
-            <div  id="innerwrapper" class="col-xs-2 col-md-2"> <a href="msg.html"><img id="navigator" class="msg" src="img/icons/msgWhite.png"></a> </div>
-            <div  id="innerwrapper" class="col-xs-2 col-md-2"> <a href="friendlist.html"><img id="navigator" class="friends" src="img/icons/friendsWhite.png"></a> </div>
+            <div id="innerwrapper" class="col-xs-2 col-md-2"> <a href="msg.html"><img id="navigator" class="msg" src="img/icons/msgWhite.png"></a> </div>
+            <div id="innerwrapper" class="col-xs-2 col-md-2"> <a href="friendlist.html"><img id="navigator" class="friends" src="img/icons/friendsWhite.png"></a> </div>
             <div id="innerwrapper" class="col-xs-2 col-md-2"> <a href="settings.html"><img id="navigator" class="friends" src="img/icons/settingsWhite.png"></a> </div>
-        <!-- last icon place holder for setting icon -->
-        <div>
+            <!-- last icon place holder for setting icon -->
+        </div>
+
     </div>
 </body>
 
