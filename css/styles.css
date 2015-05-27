@@ -60,7 +60,7 @@ a:link {
 
 #msg-buttons {
   background-color: white;
-  padding: 1%;
+  padding: 3%;
 }
 
 #msg-buttom #newmsg {
@@ -280,6 +280,8 @@ div {
  position: relative; 
  top: -0.5em;
 }
+
+
 
 #divider {
   margin: 20px;
@@ -833,3 +835,7 @@ input.cmn-toggle-round-flat:checked + label:after {
   padding:1%;
 }
 
+#innerwrapper {
+  padding:1%;
+  width: 20%;
+}
