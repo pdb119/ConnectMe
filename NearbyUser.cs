@@ -10,5 +10,6 @@ namespace ConnectMe
         public int userId;
         public string userName;
         public int distance;
+        public Game[] games;
     }
 }

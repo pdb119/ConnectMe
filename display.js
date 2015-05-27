@@ -48,15 +48,22 @@ function displayFriendsList(friends) {
     }
 }
 function displayUsersList(users) {
-    document.getElementById("friendsList").innerHTML = "";
+    var firstTemplate = document.getElementById("friendTemplate").cloneNode(true);
+    document.getElementById("friendsSection").innerHTML = "";
+    document.getElementById("friendsSection").appendChild(firstTemplate);
     for (var i = 0; i < users.length; i++) {
         var template = document.getElementById("friendTemplate").cloneNode(true);
-        template.querySelector("#frname").innerHTML = users[i].username;
+        template.querySelector("#frname").innerHTML = users[i].userName;
+        template.querySelector("#game1").innerHTML = users[i].games[0].name;
+        template.querySelector("#game2").innerHTML = users[i].games[1].name;
+        template.querySelector("#game3").innerHTML = users[i].games[2].name;
         template.style.display = "block";
         template.setAttribute("id", users[i].userName.replace(" ", "") + "ListUser");
-        document.getElementById("friendsList").appendChild(template);
+        document.getElementById("friendsSection").appendChild(template);        
+
         //users[i].distance;
         //users[i].userName;
+    }
 }
 function drawRadar(users) {
     var c = document.getElementById("radarCanvas");
