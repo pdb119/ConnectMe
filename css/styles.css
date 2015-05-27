@@ -841,5 +841,5 @@ input.cmn-toggle-round-flat:checked + label:after {
 }
 
 #flistsearch {
-  padding-bottom:1%;
+  margin-bottom:5%;
 }
