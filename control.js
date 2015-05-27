@@ -5,7 +5,7 @@ function profileLoad() {
     prof.downloadProfile();
     gSearch = new gameSearch(searchGamesReturn);
     gameSearchBtn.onclick = function () {
-        gSearch.search("test");
+        gSearch.search(document.getElementById("input").value);
     }
 }
 function friendsLoad() {
@@ -22,8 +22,8 @@ function profileUpdated() {
 function searchGamesReturn() {
     displaySearchGames(gSearch.gameList);
 }
-function addGameClicked(gameName) {
-    prof.addGame(gameName);
+function addGameClicked(gameId) {
+    prof.addGame(gameId);
 }
 function friendProfileClicked(friendId) {
     //will move later, here tempor.
