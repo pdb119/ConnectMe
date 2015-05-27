@@ -171,28 +171,47 @@
         <br>
         <br>
 
+        <!-- menu for friend profile page (ading friend, msg, schedule game)-->
          <div style="display:none;" id="options">
             <!-- msg -->
-            <a href="">
-                <a href="msg.html"><img class="setting" src="img/icons/messagewithtext.svg"></a>
+            <a href="conversation.html">
+                <img class="setting" src="img/icons/messagewithtext.svg">
             </a>
-            <!-- add friend -->
-            <a href="">
-                <img class="setting" src="img/icons/addfriendtext.svg">
-            </a>
-            <!-- schedule -->
-            <a href="">
-                <img class="setting" src="img/icons/schedulewithtext.svg">
-            </a>
-            <!-- report -->
-            <a href="">
-                <img class="setting" src="img/icons/reportwithtext.svg">
-            </a>
+            
+            <!-- add friend (needs the friend pop up to show)-->
+            <img class="setting" src="img/icons/addfriendtext.svg">
+            
+            <!-- schedule (need schedule pop up)-->
+            <img class="setting" src="img/icons/schedulewithtext.svg">
+           
+            <!-- report (need report box to pop up)-->
+            <img class="setting" src="img/icons/reportwithtext.svg">
+        </div>
+
+        <!-- add friend popup -->
+        <div class="schedule-form" style="display:none;" >
+            <!-- close box -->
+            <img id="exit" src="img/icons/closebutton.svg">
+            <h5>Friend Added!</h5>    
+        </div>
+
+        <!-- report person popup -->
+        <div class="schedule-form"  >
+            <!-- close box -->
+            <img id="exit" src="img/icons/closebutton.svg">
+            
+            <h5>Report Abuse</h5>
+            
+            <h6>Please explain the reason you are reporting this person.
+            </h6>
+            <div id="textabuse"><textarea class="form-control" id="textBox" rows="3" placeholder="Enter Message"></textarea> </div>
+            
+            <div id="submit abuse">button</div>   
         </div>
 
 
         <!-- the popup for scheduling a game-->
-        <div class="schedule-form" style="display:none">
+        <div class="schedule-form" style="display:none;">
             <!-- close box -->
             <img id="exit" src="img/icons/closebutton.svg">
             
@@ -224,12 +243,7 @@
             </div>
         </div>
 
-        <!-- add friend popup -->
-        <div class="schedule-form" >
-            <!-- close box -->
-            <img id="exit" src="img/icons/closebutton.svg">
-            <h5>Friend Added!</h5>    
-        </div>
+        
 
 
 
