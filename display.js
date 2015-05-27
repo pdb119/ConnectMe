@@ -112,4 +112,7 @@ function drawRadar(users) {
         circle.fillText(users[i].userName, x + 12, y);
         radarDotLocations[i] = { "x": x, "y": y };
     }
+    function displayConversations(cs) {
+
+    }
 }

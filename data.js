@@ -144,3 +144,32 @@ nearbyUsers.prototype.returnFunction = function (json, locA) {
 nearbyUsers.prototype.applyFilter = function () {
 
 };
+
+var messagingClient = function () {
+    this.conversations = new Array();
+};
+messagingClient.prototype.getConversations = function(){
+    var convGet = new ajax();
+    convGet.setReturnFunction(this.returnFunction, this);
+    convGet.sendAjax("getConversations", "");
+};
+messagingClient.prototype.getConversation = function (convId) {
+    var convGet = new ajax();
+    convGet.setReturnFunction(this.returnFunction, this);
+    convGet.sendAjax("getConversation", "conversationId="+convId);
+};
+messagingClient.prototype.getConversationsReturn = function (json, locA) {
+    for (var i = 0; i < conversations.length; i++) {
+        locA.conversations[locA.conversations.length] = { "id": json.conversations[i].id, "name": json.conversations[i].name };
+    }
+    
+};
+messagingClient.prototype.getConversationReturn = function (json, locA) {
+
+};
+messagingClient.prototype.getConversation = function(){
+
+};
+messagingClient.prototype.checkForMessages = function () {
+
+};

@@ -186,6 +186,73 @@ namespace ConnectMe
         }
         [WebMethod]
         [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
+        public void getConversations()
+        {
+            SqlConnection conn = new SqlConnection("Data Source=sqvuyen40w.database.windows.net;Initial Catalog=connectme;Integrated Security=False;User ID=connectme;Password=AmericanHorses!;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False");
+            conn.Open();
+            SqlCommand getGames = new SqlCommand("SELECT * FROM Conversation JOIN ConversationProfile ON Conversation.conversationId=ConversationProfile.conversationId WHERE ConversationProfile.profileId=@profileId", conn);
+            getGames.Parameters.Add(new SqlParameter("profileId", profileId));
+            SqlDataReader convReturn = getGames.ExecuteReader();
+            List<Conversation> convList = new List<Conversation>();
+            while (convReturn.Read())
+            {
+                Conversation c = new Conversation(true);
+                c.id = (int)convReturn["conversationId"];
+                c.name = (string)convReturn["name"];
+                convList.Add(c);
+            }
+            convReturn.Close();
+            conn.Close();
+            Context.Response.Clear();
+            Context.Response.ContentType = "text/json";
+            Context.Response.Write("{\"conversations\":" + new JavaScriptSerializer().Serialize(convList.ToArray()) + "}");
+            Context.Response.End();
+        }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
+        public void getConversation(int conversationId)
+        {
+            SqlConnection conn = new SqlConnection("Data Source=sqvuyen40w.database.windows.net;Initial Catalog=connectme;Integrated Security=False;User ID=connectme;Password=AmericanHorses!;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False");
+            conn.Open();
+            SqlCommand getProfiles = new SqlCommand("SELECT * FROM ConversationProfile JOIN Profile ON ConversationProfile.profileId=Profile.profileId WHERE conversationId=@convId", conn);
+            getProfiles.Parameters.Add(new SqlParameter("convId", conversationId));
+            SqlDataReader profilesReturn = getProfiles.ExecuteReader();
+            List<Profile> profileList = new List<Profile>();
+            while (profilesReturn.Read())
+            {
+                Profile c = new Profile();
+                c.profileId = (int)profilesReturn["profileId"];
+                c.username = (string)profilesReturn["username"];                
+                profileList.Add(c);
+            }
+            profilesReturn.Close();
+            SqlCommand getMessages = new SqlCommand("SELECT * FROM ConversationMessage JOIN Profile ON ConversationMessage.fromProfile=Profile.profileId WHERE conversationId=@cId", conn);
+            getMessages.Parameters.Add(new SqlParameter("cId", conversationId));
+            SqlDataReader messagesReturn = getMessages.ExecuteReader();
+            List<Message> messageList = new List<Message>();
+            while (messagesReturn.Read())
+            {
+                Message c = new Message();
+                c.id = (int)messagesReturn["messageId"];
+                c.from = new Profile();
+                c.from.profileId = (int)messagesReturn["profileId"];
+                c.from.username = (string)messagesReturn["username"];
+                c.message = (string)messagesReturn["message"];
+                messageList.Add(c);
+            }
+            profilesReturn.Close();
+            conn.Close();
+            Conversation conv = new Conversation(false);
+            conv.id = conversationId;
+            conv.members = profileList.ToArray();
+            conv.messages = messageList.ToArray();
+            Context.Response.Clear();
+            Context.Response.ContentType = "text/json";
+            Context.Response.Write("{\"conversation\":" + new JavaScriptSerializer().Serialize(conv) + "}");
+            Context.Response.End();
+        }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
         public void addGame(int gameId)            
         {
             string gameName = "no game";
