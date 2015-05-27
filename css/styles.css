@@ -839,3 +839,7 @@ input.cmn-toggle-round-flat:checked + label:after {
   padding:1%;
   width: 20%;
 }
+
+#flistsearch {
+  padding-bottom:1%;
+}
