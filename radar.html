@@ -174,11 +174,11 @@
          <div style="display:none;" id="options">
             <!-- msg -->
             <a href="">
-                <img class="setting" src="img/icons/messagewithtext.svg">
+                <a href="msg.html"><img class="setting" src="img/icons/messagewithtext.svg"></a>
             </a>
             <!-- add friend -->
             <a href="">
-                <img class="setting" src="img/icons/addfriendtext.png">
+                <img class="setting" src="img/icons/addfriendtext.svg">
             </a>
             <!-- schedule -->
             <a href="">
@@ -186,9 +186,51 @@
             </a>
             <!-- report -->
             <a href="">
-                <img class="setting" src="img/icons/reportWhite.png">
+                <img class="setting" src="img/icons/reportwithtext.svg">
             </a>
         </div>
+
+
+        <!-- the popup for scheduling a game-->
+        <div id="schedule-form" style="display:none">
+            <!-- close box -->
+            <img id="exit" src="img/icons/closebutton.svg">
+            
+            <h5>Schedule Game</h5>
+            
+            <h6>
+                Who   
+                <input type="text" class="game-form" id="normal-text">
+            </h6> 
+            
+            <h6>
+                When 
+                <input type="text" class="game-form" id="normal-text">
+            </h6>
+            
+            <h6>
+                Where
+                <input type="text" class="game-form" id="normal-text">
+            </h6>
+
+             <h6>
+                Game
+                <input type="text" class="game-form" id="normal-text">
+            </h6>
+
+            <!-- close box -->
+            <div id="request">
+                <p>Send Request</p>
+            </div>
+        </div>
+
+        <!-- add friend popup -->
+        <div id="schedule-form" >
+            <!-- close box -->
+            <img id="exit" src="img/icons/closebutton.svg">
+            <h5>Friend Added!</h5>    
+        </div>
+
 
 
         <div id="gamesDiv">

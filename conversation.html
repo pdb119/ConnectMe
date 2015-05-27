@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-	<title>Message</title>
+	<title>Conversations</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="css/styles.css">
 	<meta name="author" content="lithach">
@@ -34,76 +34,23 @@
 
 
 <body>
-	<div id="back">
-        <a href="conversation.html"><img id="backbutton" src="img/icons/backbutton.svg"></a>
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-       
-    <!-- the actual conversation between two people -->
-    <div class="chat">
-        <img id="msghead" src="img/icons/head.svg">
-        <p id="chatother"> Where are you buddy?</p>  
-    </div>
-
-    <div class="chat">
-        <img id="msgheadme" src="img/icons/playericongreen.svg">
-        <p id="chatme">Almost there...</p>
-    </div>
-
-
-
-    <div class="container-fluid bottom-menu bottomchat">
-
-    <!--send a message box -->
-        <div id="new-msg">
-            <textarea class="form-control" id="textBox" rows="3" placeholder="Enter Message"></textarea>
+	
+    <!-- list of conversations -->
+    <a href="msg.html">
+        <div class="conversation">
+            <img id="msghead" src="img/icons/head.svg">
+            <p id="name">Eric</p>
+            <p id="chatother"> Where are you buddy?</p>  
         </div>
-    
-    <!-- placeholder for text, emoticons, pictures, schedule button -->
-        <div id="msg-buttons">
-            <img class="chat-buttons" src="img/icons/Aa.svg">
-            <img class="chat-buttons" src="img/icons/smile.svg">
-            <img class="chat-buttons" src="img/icons/image.svg">
-            <img class="chat-buttons"src="img/icons/blueschedule.svg">
+    </a>
+
+    <a href="msg.html">
+        <div class="conversation">
+            <img id="msghead" src="img/icons/playericongreen.svg">
+            <p id="name">Sam</p>
+            <p id="chatother">Almost there...</p>
         </div>
-    </div>
-
-    <!-- the popup for scheduling a game-->
-    <div id="schedule-form" style="display:none">
-        <!-- close box -->
-        <img id="exit" src="img/icons/closebutton.svg">
-        
-        <h5>Schedule Game</h5>
-        
-        <h6>
-            Who   
-            <input type="text" class="game-form" id="normal-text">
-        </h6> 
-        
-        <h6>
-            When 
-            <input type="text" class="game-form" id="normal-text">
-        </h6>
-        
-        <h6>
-            Where
-            <input type="text" class="game-form" id="normal-text">
-        </h6>
-
-         <h6>
-            Game
-            <input type="text" class="game-form" id="normal-text">
-        </h6>
-
-        <!-- close box -->
-        <div id="request">
-            <p>Send Request</p>
-        </div>
-    </div>
+    </a>
 
 
 
