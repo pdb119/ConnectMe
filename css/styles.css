@@ -796,9 +796,13 @@ input.cmn-toggle-round-flat:checked + label:after {
   background-color: #8ce196;
 }
 
+/* ============================================================
+  CSSS PT 2 
+============================================================ */
 
-
-
+#listormap {
+  margin:0 auto;
+}
 
 
 
