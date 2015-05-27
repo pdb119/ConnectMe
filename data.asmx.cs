@@ -70,34 +70,43 @@ namespace ConnectMe
         [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
         public void getFriends()
         {
-            Profile[] p = new Profile[2];
-            p[0] = new Profile();
-            p[1] = new Profile();
-            p[0].username = "ICantCSS";
-            p[0].age = 20;
-            p[0].picture = "pb.jpg";
-            p[0].location = "Seattle, WA";
-            p[0].games = new Game[3];
-            p[0].games[0] = new Game();
-            p[0].games[1] = new Game();
-            p[0].games[2] = new Game();           
-            p[0].games[0].name = "GTA5";
-            p[0].games[1].name = "Call of Duty";
-            p[0].games[2].name = "Second Life";
-            p[1].username = "IPlayGamz";
-            p[1].age = 68;
-            p[1].picture = "pb.jpg";
-            p[1].location = "Seattle, WA";
-            p[1].games = new Game[3];
-            p[1].games[0] = new Game();
-            p[1].games[1] = new Game();
-            p[1].games[2] = new Game();
-            p[1].games[0].name = "Forza";
-            p[1].games[1].name = "World In Conflict";
-            p[1].games[2].name = "Cryostasis";
+            SqlConnection conn = new SqlConnection("Data Source=sqvuyen40w.database.windows.net;Initial Catalog=connectme;Integrated Security=False;User ID=connectme;Password=AmericanHorses!;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False");
+            SqlCommand getProfile = new SqlCommand("SELECT * FROM Profile JOIN Friendship ON Profile.profileId=Friendship.user2 WHERE Friendship.user1=@profileid", conn);
+            conn.Open();
+            getProfile.Parameters.Add(new SqlParameter("profileid", profileId));
+            SqlDataReader profileReturn = getProfile.ExecuteReader();
+            List<Profile> friendsList = new List<Profile>();
+            while (profileReturn.Read())
+            {
+                Profile temp = new Profile();
+                temp.username = (string)profileReturn["username"];
+                temp.profileId = (int)profileReturn["profileId"];
+                temp.age = 1;
+                temp.picture = "fdsa";
+                temp.location = "fdsa";
+                friendsList.Add(temp);
+            }
+            profileReturn.Close();
+            foreach (Profile prof in friendsList)
+            {
+                SqlCommand getGames = new SqlCommand("SELECT * FROM ProfileGame JOIN Game ON ProfileGame.gameId=Game.gameId WHERE ProfileGame.profileId=@profileid", conn);
+                getGames.Parameters.Add(new SqlParameter("profileid", prof.profileId));
+                SqlDataReader gamesReturn = getGames.ExecuteReader();
+                List<Game> gamesList = new List<Game>();
+                while (gamesReturn.Read())
+                {
+                    Game g = new Game();
+                    g.name = (string)gamesReturn["gameName"];
+                    gamesList.Add(g);
+                }
+                gamesReturn.Close();
+                prof.games = gamesList.ToArray();
+            }
+            conn.Close();
+            Profile[] friends = friendsList.ToArray();
             Context.Response.Clear();
             Context.Response.ContentType = "text/json";
-            Context.Response.Write("{\"friends\":" + new JavaScriptSerializer().Serialize(p) + "}");
+            Context.Response.Write("{\"friends\":" + new JavaScriptSerializer().Serialize(friends) + "}");
             Context.Response.End();
         }
         [WebMethod]

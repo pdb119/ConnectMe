@@ -38,9 +38,15 @@ function displayFriendsList(friends) {
         //alert(profile.games[i].name);
         var template = document.getElementById("friendTemplate").cloneNode(true);
         template.querySelector("#frname").innerHTML = friends[i].username;
-        template.querySelector("#game1").innerHTML = friends[i].games[0].name;
-        template.querySelector("#game2").innerHTML = friends[i].games[1].name;
-        template.querySelector("#game3").innerHTML = friends[i].games[2].name;
+        if (friends[i].games.length > 0) {
+            template.querySelector("#game1").innerHTML = friends[i].games[0].name;
+        }
+        if (friends[i].games.length > 1) {
+            template.querySelector("#game2").innerHTML = friends[i].games[1].name;
+        }
+        if (friends[i].games.length > 2) {
+            template.querySelector("#game3").innerHTML = friends[i].games[2].name;
+        }
         template.setAttribute("id", friends[i].username.replace(" ", "") + "FriendDiv");
         template.setAttribute("onclick", "friendProfileClicked(" + i + ");");
         template.style.display = "block";

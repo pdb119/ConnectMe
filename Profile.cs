@@ -7,6 +7,7 @@ namespace ConnectMe
 {
     public class Profile
     {
+        public int profileId;
         public string username;
         public int age;
         public string picture;
