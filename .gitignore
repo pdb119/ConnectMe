@@ -43,3 +43,6 @@ Temporary Items
 .apdisk
 *.csproj
 bin/ConnectMe.pdb
+obj/*
+Properties/*
+bin/*
