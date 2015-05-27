@@ -23,6 +23,12 @@ namespace ConnectMe
         private string profileId = "1";
         private Profile p;
         [WebMethod]
+        [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
+        public void putProfile(string username, string age)
+        {
+
+        }
+        [WebMethod]
         [ScriptMethod(UseHttpGet = true,ResponseFormat = ResponseFormat.Json)]
         public void getProfile()
         {

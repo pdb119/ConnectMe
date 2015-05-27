@@ -39,6 +39,15 @@ profileContent.prototype.updateProfile = function (vars) {
     this.username = vars["username"];
     this.age = vars["age"];
     this.picture = vars["picture"];
+    this.uploadProfile();
+};
+profileContent.prototype.uploadProfile = function(){
+    var upload = new ajax();
+    upload.setReturnFunction(this.uploadProfileReturn, this);
+    upload.sendAjax("putProfile", "username=" + this.username + ",age=" + age);
+};
+profileContent.prototype.uploadProfileReturn = function () {
+
 };
 //cookie will define which profile to download
 profileContent.prototype.downloadProfile = function () {
