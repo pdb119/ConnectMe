@@ -705,7 +705,7 @@ i {
 .settings .row {
   display: table-row;
 }
-.settings .question,
+.settings .question .question2,
 .settings .switch {
   display: table-cell;
   vertical-align: middle;
@@ -803,6 +803,7 @@ input.cmn-toggle-round-flat:checked + label:after {
 #listmap {
   margin:0 auto;
 }
+
 
 
 
