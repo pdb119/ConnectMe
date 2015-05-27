@@ -123,6 +123,22 @@ h6 {
   
 }
 
+h12 {
+  padding: 5%;
+}
+
+.addMessage {
+  position: fixed;
+  bottom: 50px;
+  padding: 0px;
+
+}
+
+#add {
+  position: relative;
+  margin-bottom: 10%;
+}
+
 .addmyfriend {
   height: 8%;
 }
