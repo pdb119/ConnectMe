@@ -23,9 +23,9 @@ function displaySearchGames(games) {
     document.getElementById("gameResults").appendChild(ulTemplate);
     for (var i = 0; i < games.length; i++) {
         var template = document.getElementById("gameResultTemplate").cloneNode(true);
-        template.querySelector(".gameResultTitle").innerHTML = games[i];
-        template.setAttribute("id", games[i].replace(" ", "") + "GameResult");
-        template.querySelector(".addGameButton").setAttribute("onclick", "addGameClicked(\"" + games[i] + "\");");
+        template.querySelector(".gameResultTitle").innerHTML = games[i].name;
+        template.setAttribute("id", games[i].name.replace(" ", "") + "GameResult");
+        template.querySelector(".addGameButton").setAttribute("onclick", "addGameClicked(\"" + games[i].gameId + "\");");
         template.style.display = "block";
         document.getElementById("gameResults").querySelector("ul").appendChild(template);
     }

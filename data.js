@@ -53,7 +53,7 @@ profileContent.prototype.uploadProfileReturn = function () {
 profileContent.prototype.downloadProfile = function () {
     var download = new ajax();
     download.setReturnFunction(this.downloadProfileReturn,this);
-    download.sendAjax("getProfile", {});
+    download.sendAjax("getProfile", {});    
 };
 profileContent.prototype.downloadProfileReturn = function (json,locA) {
     locA.username = json.username;
@@ -63,9 +63,15 @@ profileContent.prototype.downloadProfileReturn = function (json,locA) {
     locA.location = json.location;
     locA.updateFunction();
 };
-profileContent.prototype.addGame = function(gameName){
-    this.games[this.games.length] = { "name": gameName };
-    this.updateFunction();
+profileContent.prototype.addGame = function (gameId) {
+    var addGameAjax = new ajax();
+    addGameAjax.setReturnFunction(this.addGameReturn, this);
+    addGameAjax.sendAjax("addGame", "gameId="+gameId);    
+    //this.updateFunction();
+};
+profileContent.prototype.addGameReturn = function (json, locA) {
+    locA.games[locA.games.length] = { "gameId": json.game.gameId, "name": json.game.name };
+    locA.updateFunction();
 };
 profileContent.prototype.downloadFriends = function () {
     var download = new ajax();
@@ -75,6 +81,14 @@ profileContent.prototype.downloadFriends = function () {
 profileContent.prototype.downloadFriendsReturn = function (json,locA) {
     locA.friends = json.friends;
     locA.updateFunction();
+};
+profileContent.prototype.addFriend = function (userId) {
+    var serverFriendAdd = new ajax();
+    download.setReturnFunction(this.addFriendReturn, this);
+    download.sendAjax("addFriend", "profileId="+userId);
+};
+profileContent.prototype.addFriendReturn = function (json,locA) {
+    locA.downloadFriends();
 };
 profileContent.prototype.getGame = function () {
 
@@ -86,7 +100,8 @@ var gameSearch = function (updateFunction) {
     this.gameList = new Array();
     this.updateFunction = updateFunction;
 };
-gameSearch.prototype.search = function(term){
+gameSearch.prototype.search = function (term) {
+    //alert(term);
     var aj = new ajax();
     aj.setReturnFunction(this.returnFunction, this);
     aj.sendAjax("gameSearch", "searchTerm="+term);

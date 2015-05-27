@@ -388,10 +388,12 @@ h3 {
 .game {
   border-radius: 25px;
   border: 2px solid white;
-  padding: 30px; 
-  width: 100%;
+  padding: 2%; 
+  width: 80%;
   height: 120px; 
   text-align: center;
+  margin: 0 auto;
+  margin-bottom: 1%;
 }
 
 .modal-content {
@@ -684,7 +686,6 @@ i {
 
 #popup {
   width: 50%;
-  margin: 0 auto;
   text-align: center;
   border:1px;
   border-color: #06364A;
@@ -692,14 +693,15 @@ i {
   border-style: solid;
   background-color: #06364A;
   height: 50%;
+  margin: 0 auto;
 }
 
 #normaltext {
   color:black;
   width:50%;
   margin-right: 10%;
-  margin-top: 10%;
-  margin-bottom:5%;
+  margin-top: 1%;
+  margin-bottom:.1%;
   text-decoration: none;
   border-radius: 20px;
 }
@@ -823,9 +825,17 @@ input.cmn-toggle-round-flat:checked + label:after {
   background-color: #8ce196;
 }
 
+/* ============================================================
+  CSSS PT 2 
+============================================================ */
 
+#listmap {
+  margin:0 auto;
+}
 
-
+.question2 {
+  padding: 10px;
+}
 
 
 

@@ -7,6 +7,7 @@ namespace ConnectMe
 {
     public class Game
     {
+        public int gameId;
         public string name;
     }
 }

@@ -113,12 +113,25 @@ namespace ConnectMe
         [ScriptMethod(UseHttpGet = true,ResponseFormat = ResponseFormat.Json)]
         public void gameSearch(string searchTerm)
         {
-            string[] p = new string[2];
-            p[0] = "halo 4";
-            p[1] = "halo 3";
+            SqlConnection conn = new SqlConnection("Data Source=sqvuyen40w.database.windows.net;Initial Catalog=connectme;Integrated Security=False;User ID=connectme;Password=AmericanHorses!;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False");
+            conn.Open();
+            SqlCommand getGames = new SqlCommand("SELECT * FROM Game WHERE gameName LIKE '%'+@gameName+'%'", conn);
+            getGames.Parameters.Add(new SqlParameter("gameName", searchTerm.ToLower()));
+            SqlDataReader gamesReturn = getGames.ExecuteReader();
+            List<Game> gamesList = new List<Game>();
+            while (gamesReturn.Read())
+            {
+                Game g = new Game();
+                g.name = (string)gamesReturn["gameName"];
+                g.gameId = (int)gamesReturn["gameId"];
+                gamesList.Add(g);
+            }
+            gamesReturn.Close();
+            conn.Close();
+            Game[] games = gamesList.ToArray();
             Context.Response.Clear();
             Context.Response.ContentType = "text/json";
-            Context.Response.Write("{\"games\":"+new JavaScriptSerializer().Serialize(p)+"}");
+            Context.Response.Write("{\"games\":"+new JavaScriptSerializer().Serialize(games)+"}");
             Context.Response.End();
         }
 
@@ -165,6 +178,46 @@ namespace ConnectMe
             Context.Response.Write("{\"nearbyUsers\":" + new JavaScriptSerializer().Serialize(p) + "}");
             Context.Response.End();
         }
-        
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
+        public void addFriend(int profileId)
+        {
+
+        }
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
+        public void addGame(int gameId)            
+        {
+            string gameName = "no game";
+            SqlConnection conn = new SqlConnection("Data Source=sqvuyen40w.database.windows.net;Initial Catalog=connectme;Integrated Security=False;User ID=connectme;Password=AmericanHorses!;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False");
+            conn.Open();
+            SqlCommand getGames = new SqlCommand("SELECT * FROM Game WHERE gameId=@gameId", conn);
+            getGames.Parameters.Add(new SqlParameter("gameId", gameId));
+            SqlDataReader gamesReturn = getGames.ExecuteReader();
+            List<Game> gamesList = new List<Game>();
+            while (gamesReturn.Read())
+            {
+                Game g = new Game();
+                g.name = (string)gamesReturn["gameName"];
+                g.gameId = (int)gamesReturn["gameId"];
+                gamesList.Add(g);
+            }
+            gamesReturn.Close();
+            if (gamesList.Count > 0)
+            {
+                getGames = new SqlCommand("INSERT INTO ProfileGame (profileId,gameId) VALUES(@profileId,@gameId);", conn);
+                getGames.Parameters.Add(new SqlParameter("profileId", profileId));
+                getGames.Parameters.Add(new SqlParameter("gameId", gameId));
+                getGames.ExecuteNonQuery();
+                Game game = gamesList[0];
+                gameName = game.name;
+            }
+            conn.Close();
+            
+            Context.Response.Clear();
+            Context.Response.ContentType = "text/json";
+            Context.Response.Write("{\"game\":{\"gameId\":"+gameId+",\"name\":\""+ gameName + "\"}}");
+            Context.Response.End();
+        }
     }
 }
