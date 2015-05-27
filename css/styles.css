@@ -705,7 +705,7 @@ i {
 .settings .row {
   display: table-row;
 }
-.settings .question .question2,
+.settings .question,
 .settings .switch {
   display: table-cell;
   vertical-align: middle;
@@ -804,6 +804,9 @@ input.cmn-toggle-round-flat:checked + label:after {
   margin:0 auto;
 }
 
+.question2 {
+  padding: 10px;
+}
 
 
 
