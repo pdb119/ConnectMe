@@ -14,6 +14,94 @@ body {
   //max-height: 800px;*/
 }
 
+
+#msghead {
+  float: left;
+  padding-left: 2%;
+}
+
+#msgheadme {
+  float: right;
+  padding-right: 2%;
+}
+
+#chatother {
+  text-align: left;
+  padding-left: 15%;
+  padding-top: 2%;
+}
+
+#chatme {
+  text-align: right;
+  padding-right: 15%;
+  padding-top: 2%;
+}
+
+.chat {
+  padding: 10px;
+  min-height: 100px;
+}
+
+
+#msg-buttons {
+  background-color: white;
+  padding: 1%;
+}
+
+#msg-buttom #newmsg {
+  position: relative;
+}
+
+.chat-buttons {
+  width: 20%;
+  height: 30px;
+
+}
+
+.chat-buttons img {
+  height: 30px;
+}
+
+#schedule-form {
+  background-color: #06364a;
+  border-radius: 10px;
+  position: absolute;
+  width: 90%;
+  left: 5%;
+}
+
+#exit {
+  float: right;
+  padding: 5px;
+}
+
+h5 {
+  padding: 10px;
+  font-size: 24px;
+}
+
+h6 {
+  padding: 2%;
+  font-size: 20px;
+  text-align: left;
+  border-radius: 20px;
+  padding-right: 2%;
+  
+}
+
+.game-form {
+  border-radius: 15px;
+  padding-left: 15%;
+  text-align: left;
+}
+
+#request {
+  background-color: green;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+
 #forms {
   padding: 10px;
 }
@@ -137,6 +225,11 @@ a:active            {color: white}
   border-radius: 50px;
 }
 
+
+#textBox {
+  border-radius: 0px;
+}
+
 #navwrapper {
   height: 50px%;
 }
@@ -219,6 +312,11 @@ h3 {
 	background-color: #06364A;
 }
 
+.bottomchat {
+  position: fixed;
+  bottom: 50px;
+  padding: 0px;
+}
 .input-group {
 	padding-top: 25px;
 	margin-left: 15%;
@@ -660,3 +758,10 @@ input.cmn-toggle-round-flat:checked + label:after {
   margin-left: 60px;
   background-color: #8ce196;
 }
+
+
+
+
+
+
+
