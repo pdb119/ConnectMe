@@ -1,5 +1,6 @@
 ﻿var prof;
 var gSearch;
+var mes;
 function profileLoad() {
     prof = new profileContent(profileUpdated);
     prof.downloadProfile();
@@ -18,6 +19,27 @@ function profileUpdated() {
     } else if (currentPage == "friends") {
         displayFriendsList(prof.friends);
     }
+}
+function messagingLoad() {
+    mes = new messagingClient();
+    mes.conversationUpdateFunction = conversationsReturn;
+    mes.getConversations();
+    mes.messageUpdateFunction = conversationReturn;
+}
+function conversationsReturn() {
+    displayConversations(mes.conversations);
+}
+function conversations() {
+    document.getElementById("conversation").style.display = "none";
+    document.getElementById("conversations").style.display = "block";
+}
+function conversationClicked(id) {
+    document.getElementById("conversations").style.display = "none";
+    document.getElementById("conversation").style.display = "block";
+    mes.getConversation(id);
+}
+function conversationReturn() {
+    displayConversation(mes.messages);
 }
 function searchGamesReturn() {
     displaySearchGames(gSearch.gameList);
