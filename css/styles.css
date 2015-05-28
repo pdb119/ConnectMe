@@ -286,7 +286,7 @@ a:active            {color: white}
 }
 
 #navwrapper {
-  height: 50px%;
+  height: 10%;
 }
 #navigator {
   height:50px;
@@ -864,3 +864,4 @@ input.cmn-toggle-round-flat:checked + label:after {
 #flistsearch {
   margin-bottom:5%;
 }
+
