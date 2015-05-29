@@ -1,6 +1,7 @@
 ﻿var prof;
 var gSearch;
 var mes;
+//test git
 function profileLoad() {
     prof = new profileContent(profileUpdated);
     prof.downloadProfile();
@@ -21,6 +22,8 @@ function profileUpdated() {
     }
 }
 function messagingLoad() {
+    prof = new profileContent(profileUpdated);
+    prof.downloadProfile();
     mes = new messagingClient();
     mes.conversationUpdateFunction = conversationsReturn;
     mes.getConversations();
@@ -39,7 +42,8 @@ function conversationClicked(id) {
     mes.getConversation(id);
 }
 function conversationReturn() {
-    displayConversation(mes.messages);
+    alert(prof);
+    displayConversation(mes.messages,prof);
 }
 function searchGamesReturn() {
     displaySearchGames(gSearch.gameList);

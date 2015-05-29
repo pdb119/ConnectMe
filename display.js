@@ -118,7 +118,7 @@ function drawRadar(users) {
         document.getElementById("conversations").innerHTML = "";
         document.getElementById("conversations").appendChild(firstTemplate);
         for (var i = 0; i < cs.length; i++) {
-            var template = document.getElementById("conversationTemplate");
+            var template = document.getElementById("conversationTemplate").cloneNode(true);
             template.querySelector("#name").innerHTML = cs[i].name;
             template.querySelector(".templateLink").setAttribute("onclick", "conversationClicked(" + cs[i].id + ");");
             template.setAttribute("id", cs[i].id + "ConversationLink");
@@ -126,13 +126,20 @@ function drawRadar(users) {
             document.getElementById("conversations").appendChild(template);
         }
     }
-    function displayConversation(messages) {
+    function displayConversation(messages,profile) {
         var firstTemplate = document.getElementById("messageTemplate").cloneNode(true);
+        var secondTemplate = document.getElementById("messageTemplateMe").cloneNode(true);
         document.getElementById("messagesDiv").innerHTML = "";
         document.getElementById("messagesDiv").appendChild(firstTemplate);
+        document.getElementById("messagesDiv").appendChild(secondTemplate);
         //alert(messages.length);
         for (var i = 0; i < messages.length; i++) {
-            var template = document.getElementById("messageTemplate").cloneNode(true);
+            var template;
+            if (messages[i].fromId == profile.id) {
+                template = document.getElementById("messageTemplate").cloneNode(true);
+            } else {
+                template = document.getElementById("messageTemplateMe").cloneNode(true);
+            }
             template.querySelector("#chatother").innerHTML = messages[i].message;
             template.setAttribute("id", messages[i].id + "Message");
             template.style.display = "block";
