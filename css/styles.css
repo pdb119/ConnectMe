@@ -365,7 +365,7 @@ h3 {
   width:100%;
   position: fixed;
   bottom: 0px;  
-
+  height: 10%;
 	background-color: #06364A;
 }
 
@@ -859,6 +859,10 @@ input.cmn-toggle-round-flat:checked + label:after {
 #innerwrapper {
   padding:1%;
   width: 20%;
+}
+
+.iconnav {
+  height: 10%;
 }
 
 #flistsearch {
