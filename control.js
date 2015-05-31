@@ -15,10 +15,12 @@ function friendsLoad() {
     prof.downloadFriends();
 }
 function profileUpdated() {
-    if (currentPage == null || currentPage == "profile") {
-        displayProfile(prof);
-    } else if (currentPage == "friends") {
-        displayFriendsList(prof.friends);
+    if(typeof currentPage != "undefined"){
+        if (currentPage == "profile") {
+            displayProfile(prof);
+        } else if (currentPage == "friends") {
+            displayFriendsList(prof.friends);
+        }
     }
 }
 function messagingLoad() {
@@ -42,7 +44,7 @@ function conversationClicked(id) {
     mes.getConversation(id);
 }
 function conversationReturn() {
-    alert(prof);
+    //alert(prof);
     displayConversation(mes.messages,prof);
 }
 function searchGamesReturn() {

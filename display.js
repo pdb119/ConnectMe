@@ -135,8 +135,8 @@ function drawRadar(users) {
         //alert(messages.length);
         for (var i = 0; i < messages.length; i++) {
             var template;
-            alert(messages[i].fromId);
-            alert(profile.id);
+            //alert(messages[i].fromId);
+            //alert(profile.id);
             if (messages[i].fromId == profile.id) {
                 template = document.getElementById("messageTemplateMe").cloneNode(true);
             } else {

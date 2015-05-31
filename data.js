@@ -68,7 +68,7 @@ profileContent.prototype.downloadProfileReturn = function (json,locA) {
     locA.games = json.games;
     locA.location = json.location;
     locA.id = json.profileId;
-    alert(locA.id);
+    //alert(locA.id);
     locA.updateFunction();
 };
 profileContent.prototype.addGame = function (gameId) {
