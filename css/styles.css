@@ -21,6 +21,7 @@ a:link {
 #msghead {
   float: left;
   padding-left: 2%;
+  height: 100px;
 }
 
 #msgheadme {
@@ -32,6 +33,7 @@ a:link {
   text-align: left;
   padding-left: 15%;
   padding-top: 2%;
+  font-size: larger;
 }
 
 .chatme {
@@ -60,7 +62,7 @@ a:link {
 
 #msg-buttons {
   background-color: white;
-  position: absolute;
+  position: fixed;
   margin: 0;
   bottom: 10%;
   width: 100%;
@@ -69,7 +71,7 @@ a:link {
 
 
 #new-msg {
-  position: absolute;
+  position: fixed;
   margin: 0;
   bottom: 16%;
   width: 100%;
@@ -77,7 +79,7 @@ a:link {
 
 .iconnav {
   padding: 1%;
-  width: 18.8%%;
+  width: 18.8%;
   height: 98%;
 }
 
@@ -377,7 +379,7 @@ h3 {
 
 .bottom-menu {
   width:100%;
-  position: absolute;
+  position: fixed;
   bottom: 0px;  
   height: 10%;
 	background-color: #06364A;
