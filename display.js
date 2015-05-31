@@ -135,12 +135,14 @@ function drawRadar(users) {
         //alert(messages.length);
         for (var i = 0; i < messages.length; i++) {
             var template;
+            alert(messages[i].fromId);
+            alert(profile.id);
             if (messages[i].fromId == profile.id) {
-                template = document.getElementById("messageTemplate").cloneNode(true);
-            } else {
                 template = document.getElementById("messageTemplateMe").cloneNode(true);
+            } else {
+                template = document.getElementById("messageTemplate").cloneNode(true);
             }
-            template.querySelector("#chatother").innerHTML = messages[i].message;
+            template.querySelector(".chatother").innerHTML = messages[i].message;            
             template.setAttribute("id", messages[i].id + "Message");
             template.style.display = "block";
             document.getElementById("messagesDiv").appendChild(template);

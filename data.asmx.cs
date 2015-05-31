@@ -30,7 +30,7 @@ namespace ConnectMe
         }
         [WebMethod]
         [ScriptMethod(UseHttpGet = true,ResponseFormat = ResponseFormat.Json)]
-        public void getProfile()
+        public void getProfile(int ajaxid)
         {
             SqlConnection conn = new SqlConnection("Data Source=sqvuyen40w.database.windows.net;Initial Catalog=connectme;Integrated Security=False;User ID=connectme;Password=AmericanHorses!;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False");            
             SqlCommand getProfile = new SqlCommand("SELECT * FROM Profile WHERE profileId=@profileid",conn);
@@ -43,7 +43,8 @@ namespace ConnectMe
             {
                 p.username = (string)profileReturn["username"];
 
-            }
+            }            
+            p.profileId = int.Parse(profileId);
             profileReturn.Close();
             SqlCommand getGames = new SqlCommand("SELECT * FROM ProfileGame JOIN Game ON ProfileGame.gameId=Game.gameId WHERE ProfileGame.profileId=@profileid", conn);
             getGames.Parameters.Add(new SqlParameter("profileid", profileId));
@@ -63,12 +64,13 @@ namespace ConnectMe
             p.games = gamesList.ToArray();
             Context.Response.Clear();
             Context.Response.ContentType = "text/json";
+            Context.Response.Write(ajaxid);
             Context.Response.Write(new JavaScriptSerializer().Serialize(p));
             Context.Response.End();
         }
         [WebMethod]
         [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
-        public void getFriends()
+        public void getFriends(int ajaxid)
         {
             SqlConnection conn = new SqlConnection("Data Source=sqvuyen40w.database.windows.net;Initial Catalog=connectme;Integrated Security=False;User ID=connectme;Password=AmericanHorses!;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False");
             SqlCommand getProfile = new SqlCommand("SELECT * FROM Profile JOIN Friendship ON Profile.profileId=Friendship.user2 WHERE Friendship.user1=@profileid", conn);
@@ -106,12 +108,13 @@ namespace ConnectMe
             Profile[] friends = friendsList.ToArray();
             Context.Response.Clear();
             Context.Response.ContentType = "text/json";
+            Context.Response.Write(ajaxid);
             Context.Response.Write("{\"friends\":" + new JavaScriptSerializer().Serialize(friends) + "}");
             Context.Response.End();
         }
         [WebMethod]
         [ScriptMethod(UseHttpGet = true,ResponseFormat = ResponseFormat.Json)]
-        public void gameSearch(string searchTerm)
+        public void gameSearch(string searchTerm,int ajaxid)
         {
             SqlConnection conn = new SqlConnection("Data Source=sqvuyen40w.database.windows.net;Initial Catalog=connectme;Integrated Security=False;User ID=connectme;Password=AmericanHorses!;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False");
             conn.Open();
@@ -131,13 +134,14 @@ namespace ConnectMe
             Game[] games = gamesList.ToArray();
             Context.Response.Clear();
             Context.Response.ContentType = "text/json";
+            Context.Response.Write(ajaxid);
             Context.Response.Write("{\"games\":"+new JavaScriptSerializer().Serialize(games)+"}");
             Context.Response.End();
         }
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
-        public void getNearby()
+        public void getNearby(int ajaxid)
         {
             NearbyUser[] p = new NearbyUser[3];
             p[0] = new NearbyUser();
@@ -175,6 +179,7 @@ namespace ConnectMe
             p[2].games[2].name = "Cryostasis";
             Context.Response.Clear();
             Context.Response.ContentType = "text/json";
+            Context.Response.Write(ajaxid);
             Context.Response.Write("{\"nearbyUsers\":" + new JavaScriptSerializer().Serialize(p) + "}");
             Context.Response.End();
         }
@@ -186,7 +191,7 @@ namespace ConnectMe
         }
         [WebMethod]
         [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
-        public void getConversations()
+        public void getConversations(int ajaxid)
         {
             SqlConnection conn = new SqlConnection("Data Source=sqvuyen40w.database.windows.net;Initial Catalog=connectme;Integrated Security=False;User ID=connectme;Password=AmericanHorses!;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False");
             conn.Open();
@@ -205,12 +210,15 @@ namespace ConnectMe
             conn.Close();
             Context.Response.Clear();
             Context.Response.ContentType = "text/json";
+            //string url = Context.Request.Url.PathAndQuery;
+            //string url2url.IndexOf("?ajaxindex=")
+            Context.Response.Write(ajaxid);
             Context.Response.Write("{\"conversations\":" + new JavaScriptSerializer().Serialize(convList.ToArray()) + "}");
             Context.Response.End();
         }
         [WebMethod]
         [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
-        public void getConversation(int conversationId)
+        public void getConversation(int conversationId, int ajaxid)
         {
             SqlConnection conn = new SqlConnection("Data Source=sqvuyen40w.database.windows.net;Initial Catalog=connectme;Integrated Security=False;User ID=connectme;Password=AmericanHorses!;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False");
             conn.Open();
@@ -235,7 +243,7 @@ namespace ConnectMe
                 Message c = new Message();
                 c.id = (int)messagesReturn["messageId"];
                 c.from = new Profile();
-                c.from.profileId = (int)messagesReturn["profileId"];
+                c.from.profileId = (int)messagesReturn["fromProfile"];
                 c.from.username = (string)messagesReturn["username"];
                 c.message = (string)messagesReturn["message"];
                 messageList.Add(c);
@@ -248,12 +256,13 @@ namespace ConnectMe
             conv.messages = messageList.ToArray();
             Context.Response.Clear();
             Context.Response.ContentType = "text/json";
+            Context.Response.Write(ajaxid);
             Context.Response.Write("{\"conversation\":" + new JavaScriptSerializer().Serialize(conv) + "}");
             Context.Response.End();
         }
         [WebMethod]
         [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
-        public void addGame(int gameId)            
+        public void addGame(int gameId, int ajaxid)            
         {
             string gameName = "no game";
             SqlConnection conn = new SqlConnection("Data Source=sqvuyen40w.database.windows.net;Initial Catalog=connectme;Integrated Security=False;User ID=connectme;Password=AmericanHorses!;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False");

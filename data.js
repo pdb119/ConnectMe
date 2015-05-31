@@ -8,20 +8,25 @@ ajax.prototype.setReturnFunction = function (returnFunction,thisObject) {
     this.thisObject = thisObject;
 };
 ajax.prototype.sendAjax = function (method,vars) {
-    var xmlHttp = new XMLHttpRequest();
-    var th = this;
+    var xmlHttp = new XMLHttpRequest();    
     xmlHttp.onload = this.ajaxReturnFunction;
-    ajaxDictionary[xmlHttp] = this;
-    xmlHttp.open("POST", "http://connectme.me/data.asmx/" + method);
+    ajaxDictionary[ajaxDictionary.length] = this;
+    xmlHttp.open("POST", "data.asmx/" + method);
     xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlHttp.setRequestHeader("Content-length", vars.length);
     xmlHttp.setRequestHeader("Connection", "close");
-    xmlHttp.send(vars);
+    if (vars == "") {
+        xmlHttp.send("ajaxid=" + (ajaxDictionary.length - 1));
+    } else {        
+        xmlHttp.send(vars+"&ajaxid=" + (ajaxDictionary.length - 1));
+    }
+    
 };
 ajax.prototype.ajaxReturnFunction = function () {
-    var thisLoc = ajaxDictionary[this];
-    delete ajaxDictionary[this];
-    thisLoc.returnFunction(JSON.parse(this.responseText), thisLoc.thisObject);
+    var splits = this.responseText.split("{", 2);
+    var indexof = this.responseText.indexOf("{");
+    var thisLoc = ajaxDictionary[this.responseText.substring(0,indexof)];
+    thisLoc.returnFunction(JSON.parse(this.responseText.substring(indexof)), thisLoc.thisObject);
 };
 
 
@@ -54,7 +59,7 @@ profileContent.prototype.uploadProfileReturn = function () {
 profileContent.prototype.downloadProfile = function () {
     var download = new ajax();
     download.setReturnFunction(this.downloadProfileReturn,this);
-    download.sendAjax("getProfile", {});
+    download.sendAjax("getProfile", "");
 };
 profileContent.prototype.downloadProfileReturn = function (json,locA) {
     locA.username = json.username;
@@ -63,6 +68,7 @@ profileContent.prototype.downloadProfileReturn = function (json,locA) {
     locA.games = json.games;
     locA.location = json.location;
     locA.id = json.profileId;
+    alert(locA.id);
     locA.updateFunction();
 };
 profileContent.prototype.addGame = function (gameId) {
@@ -78,7 +84,7 @@ profileContent.prototype.addGameReturn = function (json, locA) {
 profileContent.prototype.downloadFriends = function () {
     var download = new ajax();
     download.setReturnFunction(this.downloadFriendsReturn, this);
-    download.sendAjax("getFriends", {});
+    download.sendAjax("getFriends", "");
 };
 profileContent.prototype.downloadFriendsReturn = function (json,locA) {
     locA.friends = json.friends;

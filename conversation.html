@@ -43,7 +43,7 @@
                 <div class="conversation">
                 <img id="msghead" src="img/icons/head.svg">
                     <p id="name">conv name</p>
-                    <p id="chatother"> (message preview)</p>
+                    <p class="chatother"> (message preview)</p>
                 </div>
             </a>
             
@@ -54,7 +54,7 @@
         <button id="add" type="button" class="btn btn-success btn-block btn-lg" >New Message</button>
     </div>
 
-    <div id="conversation"  >
+    <div id="conversation" style="display:none;" >
         <div id="back">
             <a href="javascript:conversations();"><img id="backbutton" src="img/icons/backbutton.svg"></a>
             <h6>names</h6>
@@ -68,33 +68,31 @@
     
         <!-- the actual conversation between two people -->
         <div id="messagesDiv">
-            <div id="messageTemplate"  class="chat">
+            <div id="messageTemplate" style="display:none;" class="chat">
                 <img id="msghead" src="img/icons/head.svg">
-                <p id="chatother"> Where are you buddy?</p>
+                <p class="chatother"> Where are you buddy?</p>
             </div>
 
-            <div id="messageTemplateMe"  class="chat">
+            <div id="messageTemplateMe" style="display:none;" class="chat">
                 <img id="msgheadme" src="img/icons/playericongreen.svg">
-                <p id="chatme">Almost there...</p>
+                <p class="chatother">Almost there...</p>
             </div>
         </div>
 
-        <div class="chat">
-            <img id="msgheadme" src="img/icons/playericongreen.svg">
-            <p id="chatme">Almost there...</p>
-        </div>
+        <div class="container-fluid bottom-menu bottomchat">
 
-        <!--send a message box -->
-        <div id="new-msg">
-            <textarea class="form-control" id="textBox" rows="3" placeholder="Enter Message"></textarea>
-        </div>
+            <!--send a message box -->
+            <div id="new-msg">
+                <textarea class="form-control" id="textBox" rows="3" placeholder="Enter Message"></textarea>
+            </div>
 
-        <!-- placeholder for text, emoticons, pictures, schedule button -->
-        <div id="msg-buttons">
-            <img class="chat-buttons" src="img/icons/Aa.svg">
-            <img class="chat-buttons" src="img/icons/smile.svg">
-            <img class="chat-buttons" src="img/icons/image.svg">
-            <img class="chat-buttons" src="img/icons/blueschedule.svg">
+            <!-- placeholder for text, emoticons, pictures, schedule button -->
+            <div id="msg-buttons">
+                <img class="chat-buttons" src="img/icons/Aa.svg">
+                <img class="chat-buttons" src="img/icons/smile.svg">
+                <img class="chat-buttons" src="img/icons/image.svg">
+                <img class="chat-buttons" src="img/icons/blueschedule.svg">
+            </div>
         </div>
 
         <!-- the popup for scheduling a game-->
@@ -136,16 +134,19 @@
 
     </div>
 
-        
 
-    <div class="bottom-menu">
-         <a href="radar.html"><img class="iconnav" src="img/icons/markerwhite.svg"></a> 
-        <a href="profile.html"><img class="iconnav" src="img/icons/personiconwhite.svg"></a> 
-        <a href="conversation.html"><img class="iconnav" src="img/icons/messageiconblue.svg"></a> 
-        <a href="friendlist.html"><img class="iconnav" src="img/icons/friendsiconwhite.svg"></a> 
-        <a href="settings.html"><img class="iconnav" src="img/icons/settingsiconwhite.svg"></a> 
+
+
+    <div class="container-fluid bottom-menu">
+        <div id="navwrapper" class="row">
+            <div id="innerwrapper" class="col-xs-2 col-md-2"> <a href="radar.html"><img id="navigator"  class="iconnav" src="img/icons/markerwhite.svg"></a> </div>
+            <div id="innerwrapper" class="col-xs-2 col-md-2"> <a href="profile.html"><img id="navigator" class="iconnav" src="img/icons/personiconwhite.svg"></a> </div>
+            <div  id="innerwrapper" class="col-xs-2 col-md-2"> <a href="conversation.html"><img id="navigator" class="iconnav" src="img/icons/messageiconblue.svg"></a> </div>
+            <div  id="innerwrapper" class="col-xs-2 col-md-2"> <a href="friendlist.html"><img id="navigator" class="iconnav" src="img/icons/friendsiconwhite.svg"></a> </div>
+            <div id="innerwrapper" class="col-xs-2 col-md-2"> <a href="settings.html"><img id="navigator" class="iconnav" src="img/icons/settingsiconwhite.svg"></a> 
+            </div>
+        <div>
     </div>
-
 </body>
 
 
