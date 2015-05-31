@@ -11,7 +11,7 @@ ajax.prototype.sendAjax = function (method,vars) {
     var xmlHttp = new XMLHttpRequest();    
     xmlHttp.onload = this.ajaxReturnFunction;
     ajaxDictionary[ajaxDictionary.length] = this;
-    xmlHttp.open("POST", "data.asmx/" + method);
+    xmlHttp.open("POST", "http://connectme.me/data.asmx/" + method);
     xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlHttp.setRequestHeader("Content-length", vars.length);
     xmlHttp.setRequestHeader("Connection", "close");
