@@ -28,13 +28,13 @@ a:link {
   padding-right: 2%;
 }
 
-#chatother {
+.chatother {
   text-align: left;
   padding-left: 15%;
   padding-top: 2%;
 }
 
-#chatme {
+.chatme {
   text-align: right;
   padding-right: 15%;
   padding-top: 2%;
