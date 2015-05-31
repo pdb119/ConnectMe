@@ -365,9 +365,9 @@ h3 {
   padding:0px;
 }
 
-#profilepic {
+.profilePic {
   float:left;
-  height: 70px;
+  width: 7%;
 }
 
 #schat {
@@ -416,6 +416,8 @@ h3 {
 
 .heading {
 	padding: 20px;
+  width:80%;
+  margin:auto;
 }
 
 .gameSection {
@@ -874,6 +876,10 @@ input.cmn-toggle-round-flat:checked + label:after {
 
 #flistsearch {
   margin-bottom:5%;
+}
+
+#gamesDiv {
+  width: 80%;
 }
 
 
