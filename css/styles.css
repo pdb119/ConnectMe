@@ -37,7 +37,7 @@ a:link {
 }
 
 .chatme {
-  text-align: right;
+  text-align: left;
   padding-right: 15%;
   padding-top: 2%;
 }
@@ -892,5 +892,7 @@ input.cmn-toggle-round-flat:checked + label:after {
   margin:auto;
 }
 
-
+.boxes {
+  padding: 0;
+}
 
