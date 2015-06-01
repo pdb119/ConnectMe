@@ -63,8 +63,10 @@ function displayUsersList(users) {
         template.querySelector("#game1").innerHTML = users[i].games[0].name;
         template.querySelector("#game2").innerHTML = users[i].games[1].name;
         template.querySelector("#game3").innerHTML = users[i].games[2].name;
+        template.querySelector(".messageLink").setAttribute("href", "conversation.html#" + users[i].userId);
         template.style.display = "block";
         template.setAttribute("id", users[i].userName.replace(" ", "") + "ListUser");
+        template.setAttribute("onclick", "radarProfileClicked("+users[i].userId+");");
         document.getElementById("friendsSection").appendChild(template);        
 
         //users[i].distance;
@@ -146,5 +148,23 @@ function drawRadar(users) {
             template.setAttribute("id", messages[i].id + "Message");
             template.style.display = "block";
             document.getElementById("messagesDiv").appendChild(template);
+        }
+    }
+
+    function displayFriendProfile(prof) {
+        document.getElementById("profileNameSpan").innerHTML = prof.username;
+        document.getElementById("profileAgeSpan").innerHTML = prof.age;
+        document.getElementById("profileLocationSpan").innerHTML = prof.location;
+        var firstTemplate = document.getElementById("gameTemplate").cloneNode(true);
+        document.getElementById("gamesDiv").innerHTML = "";
+        document.getElementById("gamesDiv").appendChild(firstTemplate);
+        var gamesArray = prof.games;
+        for (var i = 0; i < gamesArray.length; i++) {
+            //alert(profile.games[i].name);
+            var template = document.getElementById("gameTemplate").cloneNode(true);
+            template.querySelector(".game").innerHTML = "<h1>" + gamesArray[i].name + "</h1>";
+            template.setAttribute("id", gamesArray[i].name.replace(" ", "") + "GameDiv");
+            template.style.display = "block";
+            document.getElementById("gamesDiv").appendChild(template);
         }
     }

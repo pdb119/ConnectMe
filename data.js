@@ -11,7 +11,7 @@ ajax.prototype.sendAjax = function (method,vars) {
     var xmlHttp = new XMLHttpRequest();    
     xmlHttp.onload = this.ajaxReturnFunction;
     ajaxDictionary[ajaxDictionary.length] = this;
-    xmlHttp.open("POST", "http://connectme.me/data.asmx/" + method);
+    xmlHttp.open("POST", "data.asmx/" + method);
     xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlHttp.setRequestHeader("Content-length", vars.length);
     xmlHttp.setRequestHeader("Connection", "close");
@@ -61,6 +61,11 @@ profileContent.prototype.downloadProfile = function () {
     download.setReturnFunction(this.downloadProfileReturn,this);
     download.sendAjax("getProfile", "");
 };
+profileContent.prototype.downloadOtherProfile = function (profileId) {
+    var download = new ajax();
+    download.setReturnFunction(this.downloadProfileReturn, this);
+    download.sendAjax("getOtherProfile", "profileId="+profileId);
+};
 profileContent.prototype.downloadProfileReturn = function (json,locA) {
     locA.username = json.username;
     locA.age = json.age;
@@ -69,7 +74,7 @@ profileContent.prototype.downloadProfileReturn = function (json,locA) {
     locA.location = json.location;
     locA.id = json.profileId;
     //alert(locA.id);
-    locA.updateFunction();
+    locA.updateFunction(locA);
 };
 profileContent.prototype.addGame = function (gameId) {
     var addGameAjax = new ajax();
@@ -155,7 +160,8 @@ nearbyUsers.prototype.applyFilter = function () {
 
 var messagingClient = function () {
     this.conversations = new Array();
-    this.messages = new Array();    
+    this.messages = new Array();
+    this.currentConversation = -1;
 };
 messagingClient.prototype.getConversations = function(){
     var convGet = new ajax();
@@ -165,6 +171,7 @@ messagingClient.prototype.getConversations = function(){
 messagingClient.prototype.getConversation = function (convId) {
     this.messages = new Array();
     var convGet = new ajax();
+    this.currentConversation = convId;
     convGet.setReturnFunction(this.getConversationReturn, this);
     convGet.sendAjax("getConversation", "conversationId="+convId);
 };
@@ -183,4 +190,26 @@ messagingClient.prototype.getConversationReturn = function (json, locA) {
 };
 messagingClient.prototype.checkForMessages = function () {
 
+};
+messagingClient.prototype.sendMessage = function (message) {
+    var sendAjax = new ajax();
+    sendAjax.setReturnFunction(this.sendMessageReturn, this);
+    sendAjax.sendAjax("sendMessage", "conversationId=" + this.currentConversation+"&message="+message);
+};
+messagingClient.prototype.sendMessageReturn = function (json, locA) {
+    locA.getConversation(locA.currentConversation);
+};
+messagingClient.prototype.searchUsers = function(searchTerm){
+
+};
+messagingClient.prototype.searchUsersReturn = function(json,locA){
+    locA.searchUsersReturn();
+}
+messagingClient.prototype.newConversation = function(otherUserId){
+    var sendAjax = new ajax();
+    sendAjax.setReturnFunction(this.sendMessageReturn, this);
+    sendAjax.sendAjax("newConversation", "userId=" + this.otherUserId);
+};
+messagingClient.prototype.newConversationReturn = function (json, locA) {
+    locA.newConversationReturnFunction(json.conversationId);
 };
