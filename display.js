@@ -128,12 +128,20 @@ function drawRadar(users) {
             document.getElementById("conversations").appendChild(template);
         }
     }
-    function displayConversation(messages,profile) {
+    function displayConversation(mesAge, profile) {
+        var messages = mesAge.messages;
+        var convArrayVal = -1;
+        for (var i = 0; i < mesAge.conversations.length; i++) {
+            if (mesAge.conversations[i].id == mesAge.currentConversation) {
+                convArrayVal = i;
+            }
+        }
+        var conversation = mesAge.conversations[convArrayVal];        
         var firstTemplate = document.getElementById("messageTemplate").cloneNode(true);
         var secondTemplate = document.getElementById("messageTemplateMe").cloneNode(true);
         document.getElementById("messagesDiv").innerHTML = "";
         document.getElementById("messagesDiv").appendChild(firstTemplate);
-        document.getElementById("messagesDiv").appendChild(secondTemplate);
+        document.getElementById("messagesDiv").appendChild(secondTemplate);        
         //alert(messages.length);
         for (var i = 0; i < messages.length; i++) {
             var template;
@@ -144,6 +152,7 @@ function drawRadar(users) {
             } else {
                 template = document.getElementById("messageTemplate").cloneNode(true);
             }
+            document.getElementById("conversationName").innerHTML = conversation.name;
             template.querySelector(".chatother").innerHTML = messages[i].message;            
             template.setAttribute("id", messages[i].id + "Message");
             template.style.display = "block";

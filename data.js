@@ -11,7 +11,7 @@ ajax.prototype.sendAjax = function (method,vars) {
     var xmlHttp = new XMLHttpRequest();    
     xmlHttp.onload = this.ajaxReturnFunction;
     ajaxDictionary[ajaxDictionary.length] = this;
-    xmlHttp.open("POST", "http://connectme.me/data.asmx/" + method);
+    xmlHttp.open("POST", "data.asmx/" + method);
     xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlHttp.setRequestHeader("Content-length", vars.length);
     xmlHttp.setRequestHeader("Connection", "close");
@@ -177,7 +177,7 @@ messagingClient.prototype.getConversation = function (convId) {
 };
 messagingClient.prototype.getConversationsReturn = function (json, locA) {
     for (var i = 0; i < json.conversations.length; i++) {
-        locA.conversations[locA.conversations.length] = { "id": json.conversations[i].id, "name": json.conversations[i].name };
+        locA.conversations[locA.conversations.length] = { "id": json.conversations[i].id, "name": json.conversations[i].name,"members":json.conversations[i].members };
     }
     locA.conversationUpdateFunction();
 };
@@ -207,8 +207,8 @@ messagingClient.prototype.searchUsersReturn = function(json,locA){
 }
 messagingClient.prototype.newConversation = function(otherUserId){
     var sendAjax = new ajax();
-    sendAjax.setReturnFunction(this.sendMessageReturn, this);
-    sendAjax.sendAjax("newConversation", "userId=" + this.otherUserId);
+    sendAjax.setReturnFunction(this.newConversationReturn, this);
+    sendAjax.sendAjax("newConversation", "userId=" + otherUserId);
 };
 messagingClient.prototype.newConversationReturn = function (json, locA) {
     locA.newConversationReturnFunction(json.conversationId);

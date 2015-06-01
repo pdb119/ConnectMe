@@ -37,21 +37,32 @@ function conversationsReturn() {
     var test = window.location.hash;
     if (window.location.hash) {
         var found = false;
-        for (var i = 0; i < mes.conversations; i++) {
-            if (mes.conversations[i].members.length == 1 && mes.conversations[i].members[0].profileId == window.location.hash) {
+        for (var i = 0; i < mes.conversations.length; i++) {
+            for (var j = 0; j < mes.conversations[i].members.length;j++){
+                if (mes.conversations[i].members.length == 2 && mes.conversations[i].members[j].profileId == window.location.hash.substring(1)) {
+                    document.getElementById("conversations").style.display = "none";
+                    document.getElementById("conversation").style.display = "block";
+                    mes.getConversation(mes.conversations[i].id);
+                    found = true;
+                    j = mes.conversations[i].members.length;                    
+                }
+            }
+            if (found) {
                 i = mes.conversations.length;
-                mes.getConversation(mes.conversations[i].id);
-                found = true;
             }
         }
         if (!found) {
             mes.newConversationReturnFunction = newConversationReturn;
-            mes.newConversation(window.location.hash);
+            mes.newConversation(window.location.hash.substring(1));
         }
     }
 }
 function newConversationReturn(convId) {
     mes.getConversation(convId);
+    document.getElementById("conversations").style.display = "none";
+    document.getElementById("conversation").style.display = "block";
+    mes.conversationUpdateFunction = secondConversationUpdate;
+    mes.getConversations();
 }
 function conversations() {
     document.getElementById("conversation").style.display = "none";
@@ -62,9 +73,12 @@ function conversationClicked(id) {
     document.getElementById("conversation").style.display = "block";
     mes.getConversation(id);
 }
+function secondConversationUpdate() {
+    displayConversations(mes, prof);
+}
 function conversationReturn() {
     //alert(prof);
-    displayConversation(mes.messages,prof);
+    displayConversation(mes,prof);
 }
 function searchGamesReturn() {
     displaySearchGames(gSearch.gameList);
