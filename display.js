@@ -93,7 +93,7 @@ function drawRadar(users) {
     radarDotLocations = new Array();
     for (var i = 0; i < users.length; i++) {
         circle.fillStyle = "#000000";
-        var dist = users[i].distance;
+        var dist = users[i].distance/14;
         var closestCircle = circleRads[0];
         var shortest = Math.abs(dist - circleRads[0]);
         for (var j = 1; j < circleRads.length; j++) {
