@@ -75,6 +75,7 @@ function displayUsersList(users) {
 }
 function drawRadar(users) {
     var c = document.getElementById("radarCanvas");
+    c.getContext("2d").clearRect(0, 0, c.width, c.height);
     var circleRads = new Array();
     for (var rad = 165; rad > 30; rad -= 35) {
         var circle = c.getContext("2d");

@@ -133,9 +133,12 @@ var nearbyUsers = function (updateFunction) {
     this.nearbyUsers = new Array();
 };
 nearbyUsers.prototype.getUsersNearby = function () {
-    var aj = new ajax();
-    aj.setReturnFunction(this.returnFunction, this);
-    aj.sendAjax("getNearby", "");
+    this.updateLocation();
+};
+nearbyUsers.prototype.getUsersNearbyWithLocation = function (lat, long) {
+    var getNearby = new ajax();
+    getNearby.setReturnFunction(this.returnFunction, this);
+    getNearby.sendAjax("getNearby", "latitude=" + lat + "&longitude=" + long);
 };
 nearbyUsers.prototype.updateLocation = function(){
     if (navigator.geolocation) {
@@ -148,7 +151,7 @@ nearbyUsers.prototype.updateLocation = function(){
     }
 };
 nearbyUsers.prototype.updateLocationReturn = function (pos) {
-    //alert(pos.coords.latitude);
+    locationUpdated(pos.coords.latitude,pos.coords.longitude);
 }
 nearbyUsers.prototype.returnFunction = function (json, locA) {
     locA.nearbyUsers = json.nearbyUsers;

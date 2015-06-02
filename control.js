@@ -2,6 +2,18 @@
 var gSearch;
 var mes;
 //test git
+function checkLogin(returnFunction) {
+    var checkLog = new ajax();
+    checkLog.setReturnFunction(checkLoginReturn, returnFunction);
+    checkLog.sendAjax("checkLogin", "");
+}
+function checkLoginReturn(json, locA) {
+    if (json.loggedIn != 1) {
+        window.location = "index.aspx";
+    } else {
+        locA();
+    }
+}
 function profileLoad() {
     prof = new profileContent(profileUpdated);
     prof.downloadProfile();
@@ -106,6 +118,7 @@ function radarProfileReturn(prof) {
     document.getElementById("friendsSection").style.display = "none";
     document.getElementById("friendProfileDiv").style.display = "block";
 }
+
 function sendMessage() {
     mes.sendMessage(document.getElementById("textBox").value);
     document.getElementById("textBox").value = "";
