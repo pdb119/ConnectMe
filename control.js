@@ -23,6 +23,7 @@ function profileLoad() {
     }
 }
 function friendsLoad() {
+    console.log("friendsLoad");
     prof = new profileContent(profileUpdated);
     prof.downloadFriends();
 }

@@ -223,12 +223,19 @@ namespace ConnectMe
                             g.name = (string)gamesReturn["gameName"];
                             gamesList.Add(g);
                         }
+                        while (gamesList.Count < 3)
+                        {
+                            Game g = new Game();
+                            g.name = "(User Has no games)";
+                            gamesList.Add(g);
+                        }
                         gamesReturn.Close();
                         nb.games = gamesList.ToArray();
                         nearbyList.Add(nb);
                     }
                 }
             }
+            conn.Close();
             Context.Response.Clear();
             Context.Response.ContentType = "text/json";
             Context.Response.Write(ajaxid);
@@ -331,7 +338,7 @@ namespace ConnectMe
         [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
         public void addGame(int gameId, int ajaxid)
         {
-            string gameName = "no game";
+            string gameName = "(User Has no games)";
             SqlConnection conn = new SqlConnection("Data Source=sqvuyen40w.database.windows.net;Initial Catalog=connectme;Integrated Security=False;User ID=connectme;Password=AmericanHorses!;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False");
             conn.Open();
             SqlCommand getGames = new SqlCommand("SELECT * FROM Game WHERE gameId=@gameId", conn);
