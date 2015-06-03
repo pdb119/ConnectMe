@@ -89,27 +89,79 @@
         <br>
         <br>
 
-        <div style="display:none;" id="options">
-            <!-- msg -->
-            <a href="">
-                <img class="setting" src="img/icons/messagewithtext.svg">
-            </a>
-            <!-- add friend -->
-            <a href="">
-                <img class="setting" src="img/icons/addfriendtext.png">
-            </a>
-            <!-- schedule -->
-            <a href="">
-                <img class="setting" src="img/icons/schedulewithtext.svg">
-            </a>
-            <!-- report -->
-            <a href="">
-                <img class="setting" src="img/icons/reportWhite.png">
-            </a>
+        <!-- Pat make this appear when friendProfileDiv appears? 
+        (menu for friend profile page, ading friend, msg, schedule game)-->
+         <div style="display:none;" id="options">
+            
+            <!-- Pat go to conversation page and start new msg -->
+            <img class="setting" src="img/icons/messagewithtext.svg">
+            
+            <!-- Pat needs the friend pop up to show (right below) -->
+            <img class="setting" src="img/icons/addfriendtext.svg">
+            
+            <!--Pat need schedule pop up-->
+            <img class="setting" src="img/icons/schedulewithtext.svg">
+           
+            <!-- Pat need report box to pop up)-->
+            <img class="setting" src="img/icons/reportwithtext.svg">
+        </div>
+
+        <!-- Pat this is the popup for adding friend popup -->
+        <div class="schedule-form" style="display:none;" >
+            <!-- close box -->
+            <img id="exit" src="img/icons/closebutton.svg">
+            <h5>Friend Added!</h5>    
+        </div>
+
+        <!-- Pat this is the popup for scheduling a game-->
+        <div class="schedule-form" style="display:none;">
+            <!-- close box -->
+            <img id="exit" src="img/icons/closebutton.svg">
+            
+            <h5>Schedule Game</h5>
+            
+            <h6>
+                Who   
+                <input type="text" class="game-form" id="normal-text">
+            </h6> 
+            
+            <h6>
+                When 
+                <input type="text" class="game-form" id="normal-text">
+            </h6>
+            
+            <h6>
+                Where
+                <input type="text" class="game-form" id="normal-text">
+            </h6>
+
+             <h6>
+                Game
+                <input type="text" class="game-form" id="normal-text">
+            </h6>
+
+            <!-- close box -->
+            <div id="request">
+                <p>Send Request</p>
+            </div>
+        </div>
+
+        <!-- Pat this is report person popup -->
+        <div class="schedule-form">
+            <!-- close box -->
+            <img id="exit" src="img/icons/closebutton.svg">
+            
+            <h5>Report Abuse</h5>
+            
+            <h6>Please explain the reason you are reporting this person.
+            </h6>
+            <div id="textabuse"><textarea class="form-control" id="textBox" rows="3" placeholder="Enter Message"></textarea> </div>
+            
+            <div id="submit abuse">button</div>   
         </div>
 
 
-
+        <!-- list of game that shows up for the friend's profile, should show up with friendProfileDiv -->
         <div id="gamesDiv">
             <div id="gameTemplate" class="gameSection" style="display:none;">
                 <div class="game">

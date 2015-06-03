@@ -36,6 +36,7 @@
 <body>
 	<div class="heading">
 		<img class="profilePic" src="img/icons/personiconwhite.svg">
+		<!-- Pat this edit button needs to have popup for div id="firstEditPop" line 50 -->
 		<div class="editButton">
 			<img src="img/icons/edit.svg">
 		</div>
@@ -46,11 +47,13 @@
 		</div>	
 	</div>
 
-	<div class="schedule-form" style="display:none">
+	<div class="schedule-form" id="firstEditPop" style="display:none">
+			<!-- Pat this needs close pop up-->
             <img id="ppclose" src="img/icons/closebutton.svg">
             <h1>Gamer ID: <input type="text" id="normaltext"></h1>
             <h1>Age: <input type="text" id="normaltext"></h1>
             <h1>Location: <input type="text" id="normaltext"></h1>
+            <!-- Pat this needs close pop up -->
             <button id="popupbutt" type="button" class="btn btn-primary">Done</button>
     </div>
 

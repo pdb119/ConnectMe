@@ -156,6 +156,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Pat make the friend profile appear-->
     <div id="friendProfileDiv" style="display:none;">
         <div class="heading">
             <img class="profilePic" src="img/icons/playericongreen.svg">
@@ -175,48 +177,35 @@
         <br>
         <br>
 
-        <!-- menu for friend profile page (ading friend, msg, schedule game)-->
+        <!-- Pat make this appear when friendProfileDiv appears? 
+        (menu for friend profile page, ading friend, msg, schedule game)-->
          <div style="display:none;" id="options">
-            <!-- msg -->
-            <a href="conversation.html">
-                <img class="setting" src="img/icons/messagewithtext.svg">
-            </a>
             
-            <!-- add friend (needs the friend pop up to show)-->
+            <!-- Pat go to conversation page and start new msg -->
+            <img class="setting" src="img/icons/messagewithtext.svg">
+            
+            <!-- Pat needs the friend pop up to show (right below) -->
             <img class="setting" src="img/icons/addfriendtext.svg">
             
-            <!-- schedule (need schedule pop up)-->
+            <!--Pat need schedule pop up-->
             <img class="setting" src="img/icons/schedulewithtext.svg">
            
-            <!-- report (need report box to pop up)-->
+            <!-- Pat need report box to pop up)-->
             <img class="setting" src="img/icons/reportwithtext.svg">
         </div>
 
-        <!-- add friend popup -->
+        <!-- Pat this is the popup for adding friend popup -->
         <div class="schedule-form" style="display:none;" >
-            <!-- close box -->
+            <!-- Pat close box -->
             <img id="exit" src="img/icons/closebutton.svg">
+
+            <!-- Pat close box -->
             <h5>Friend Added!</h5>    
         </div>
 
-        <!-- report person popup -->
-        <div class="schedule-form"  >
-            <!-- close box -->
-            <img id="exit" src="img/icons/closebutton.svg">
-            
-            <h5>Report Abuse</h5>
-            
-            <h6>Please explain the reason you are reporting this person.
-            </h6>
-            <div id="textabuse"><textarea class="form-control" id="textBox" rows="3" placeholder="Enter Message"></textarea> </div>
-            
-            <div id="submit abuse">button</div>   
-        </div>
-
-
-        <!-- the popup for scheduling a game-->
+        <!-- Pat this is the popup for scheduling a game-->
         <div class="schedule-form" style="display:none;">
-            <!-- close box -->
+            <!-- Pat close box -->
             <img id="exit" src="img/icons/closebutton.svg">
             
             <h5>Schedule Game</h5>
@@ -241,28 +230,24 @@
                 <input type="text" class="game-form" id="normal-text">
             </h6>
 
-            <!-- close box -->
+            <!-- Pat close box -->
             <div id="request">
                 <p>Send Request</p>
             </div>
         </div>
 
-        
-        <!-- menu for friend profile page (ading friend, msg, schedule game)-->
-         <div style="display:none;" id="options">
-            <!-- msg -->
-            <a href="conversation.html">
-                <img class="setting" src="img/icons/messagewithtext.svg">
-            </a>
+        <!-- Pat this is report person popup -->
+        <div class="schedule-form">
+            <!-- Pat close box -->
+            <img id="exit" src="img/icons/closebutton.svg">
             
-            <!-- add friend (needs the friend pop up to show)-->
-            <img class="setting" src="img/icons/addfriendtext.svg">
+            <h5>Report Abuse</h5>
             
-            <!-- schedule (need schedule pop up)-->
-            <img class="setting" src="img/icons/schedulewithtext.svg">
-           
-            <!-- report (need report box to pop up)-->
-            <img class="setting" src="img/icons/reportwithtext.svg">
+            <h6>Please explain the reason you are reporting this person.
+            </h6>
+            <div id="textabuse"><textarea class="form-control" id="textBox" rows="3" placeholder="Enter Message"></textarea> </div>
+            <!-- Pat close box -->
+            <div id="submit abuse">button</div>   
         </div>
 
 
