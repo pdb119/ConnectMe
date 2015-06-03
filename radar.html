@@ -14,7 +14,7 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
-    
+    <!-- Latest compiled and minified JavaScript -->
 
     <!-- our own stylesheet for overrides -->
     <link rel="stylesheet" href="css/styles.css">
@@ -34,25 +34,25 @@
     <script type="text/javascript" src="control.js"></script>
     <script type="text/javascript" src="data.js"></script>
     <script type="text/javascript" src="display.js"></script>
-    <script type="text/javascript">
+    <script type="text/javascript"> 
         var radarDotLocations;
         var radarView;
-        function updateLocationIntervalHandler() {
-            radarView.updateLocation();
+        function locationUpdated(latitude, longitude) {
+            radarView.getUsersNearbyWithLocation(latitude, longitude);
         }
-        function locationUpdated(lat, long) {
-            radarView.getUsersNearbyWithLocation(lat, long);
+        function updateLocationIntervalHandler() {
+            radarView.getUsersNearby();
         }
         window.onload = function () {
-            checkLogin(radarLoad);
+            checkLogin(radarLoaded);
         };
-            function radarLoad(){
+            function radarLoaded(){
             document.getElementById("cmn-toggle-4").onclick = function (e) {
                 if (document.getElementById("radarCanvasDiv").style.display == "none") {                   
                     document.getElementById("friendsSection").style.display = "none";
                     document.getElementById("radarCanvasDiv").style.display = "block";
                     //drawRadar(radarView);
-                } else {                   
+                } else {
                     document.getElementById("friendsSection").style.display = "block";
                     document.getElementById("radarCanvasDiv").style.display = "none";                    
                     displayUsersList(radarView.nearbyUsers);
@@ -81,10 +81,9 @@
             };
             radarView = new nearbyUsers(drawRadar);
             radarView.getUsersNearby();
-            //radarView.updateLocation();
-            radarView.updateLocation();
+            //radarView.updateLocation();            
             setInterval("updateLocationIntervalHandler()", 10000);
-        };
+        }
         
 
     </script>
