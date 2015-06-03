@@ -156,7 +156,11 @@ h12 {
 }
 
 .addmyfriend {
-  height: 8%;
+  height: 75px;
+}
+
+.myProfile {
+  height: 60px;
 }
 
 .game-form {
