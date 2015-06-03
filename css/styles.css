@@ -371,9 +371,9 @@ h3 {
   padding:0px;
 }
 
-.profilePic {
-  float:left;
-  width: 7%;
+.profilepic {
+  float: left;
+  padding: 10px;
 }
 
 #schat {
