@@ -13,6 +13,13 @@
         var currentPage = "profile";
         window.onload = function () {
             checkLogin(profileLoad);
+            document.getElementById("edit1").onclick = function(){
+				document.getElementById("firstEditPop").style.display = "block";
+			};
+
+			document.getElementById("ppclose").onclick = function(){
+				document.getElementById("firstEditPop").style.display = "none";
+			};
         }
 
     </script>
@@ -38,7 +45,7 @@
 		<img class="profilePic" src="img/icons/personiconwhite.svg">
 		<!-- Pat this edit button needs to have popup for div id="firstEditPop" line 50 -->
 		<div class="editButton">
-			<img src="img/icons/edit.svg">
+			<img id="edit1" src="img/icons/edit.svg">
 		</div>
 		<div class="profileDetails">
             <h1 id="profileNameSpan">Name</h1>

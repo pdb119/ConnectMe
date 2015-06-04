@@ -24,6 +24,10 @@
         var currentPage = "friends";
         window.onload = function () {
             checkLogin(friendsLoad);
+            
+            document.getElementById("exit").onclick = function(){
+                document.getElementById("reportplayer").style.display = "none";
+            };
         };
 
     </script>
@@ -147,7 +151,7 @@
         </div>
 
         <!-- Pat this is report person popup -->
-        <div class="schedule-form">
+        <div class="schedule-form" id="reportplayer">
             <!-- close box -->
             <img id="exit" src="img/icons/closebutton.svg">
             
@@ -157,7 +161,7 @@
             </h6>
             <div id="textabuse"><textarea class="form-control" id="textBox" rows="3" placeholder="Enter Message"></textarea> </div>
             
-            <div id="submit abuse">button</div>   
+            <div id="submit abuse"><button class="btn btn-default">Submit</button></div>   
         </div>
 
 
