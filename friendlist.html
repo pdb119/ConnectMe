@@ -22,14 +22,13 @@
     <script type="text/javascript" src="control.js"></script>
     <script type="text/javascript">
         var currentPage = "friends";
-        window.onload = function () {
+        window.onload = function () {            
             checkLogin(friendsLoad);
             
             document.getElementById("exit3").onclick = function(){
                 document.getElementById("reportplayer").style.display = "none";
             };
-
-            checkLogin(profileLoad);
+            
             document.getElementById("reporting").onclick = function(){
                 document.getElementById("reportplayer").style.display = "block";
             };
