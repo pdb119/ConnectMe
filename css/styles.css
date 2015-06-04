@@ -899,3 +899,6 @@ input.cmn-toggle-round-flat:checked + label:after {
   padding: 0;
 }
 
+.addPadding {
+  padding: 10px;
+}
