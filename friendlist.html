@@ -28,6 +28,11 @@
             document.getElementById("exit3").onclick = function(){
                 document.getElementById("reportplayer").style.display = "none";
             };
+
+            checkLogin(profileLoad);
+            document.getElementById("reporting").onclick = function(){
+                document.getElementById("reportplayer").style.display = "block";
+            };
         };
 
     </script>
@@ -53,7 +58,7 @@
 		<div id="friendTemplate" class="game" style="display:none;">
 			<div id="schat">
 				<img class="myProfile" src="img/icons/messageiconwhite.svg">
-				<img class="myProfile" src="img/icons/reportwithtext.svg">
+				<img id="reporting" class="myProfile" src="img/icons/reportwithtext.svg">
 			</div>
 			<div id="profile">
 			<img id="profilepic" src="img/icons/playericongreen.svg">
