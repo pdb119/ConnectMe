@@ -120,7 +120,7 @@ a:link {
   padding: 2%;
 }
 
-#exit {
+.exit {
   float: right;
   padding: 5px;
 }
